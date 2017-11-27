@@ -21,7 +21,7 @@
         "phpspec/phpspec": "^4.2",
         "php-mock/php-mock-prophecy": "^0.0.2"
     },
-	"autoload": {
+    "autoload": {
         "psr-4": {
             "QEEP\\QEEPApiClient\\": "src/"
         }
