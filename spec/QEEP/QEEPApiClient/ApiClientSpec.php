@@ -5,7 +5,6 @@ namespace spec\QEEP\QEEPApiClient;
 use QEEP\QEEPApiClient\ApiClient;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use QEEP\QEEPApiClient\Model\OrderStatus;
 
 class ApiClientSpec extends ObjectBehavior
 {
