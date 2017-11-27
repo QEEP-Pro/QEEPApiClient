@@ -1,0 +1,28 @@
+{
+    "name": "qeep-pro/qeep-api-client",
+    "description": "Client for QEEP-Pro API",
+    "keywords": ["api", "client"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "QEEP-Pro",
+            "email": "info@qeep.pro"
+        }
+    ],
+    "config": {
+        "bin-dir": "bin"
+    },
+    "type": "project",
+    "require": {
+		"php": ">=7.1",
+        "symfony/serializer": "^3.3"
+    },
+	"require-dev": {
+        "phpspec/phpspec": "^4.2"
+    },
+	"autoload": {
+        "psr-4": {
+            "QEEP\\QEEPApiClient\\": "src/"
+        }
+    }
+}
