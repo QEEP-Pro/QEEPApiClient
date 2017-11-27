@@ -9,7 +9,6 @@ use QEEP\QEEPApiClient\Model\Product;
 use QEEP\QEEPApiClient\Model\Setting;
 use QEEP\QEEPApiClient\Model\Article;
 use QEEP\QEEPApiClient\Model\ArticleType;
-use QEEP\QEEPApiClient\ApiException;
 
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
@@ -231,6 +230,8 @@ class ApiClient
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
                 break;
         }
+
+        var_dump($url);
 
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

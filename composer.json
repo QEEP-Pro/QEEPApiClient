@@ -19,7 +19,8 @@
         "symfony/property-access": "^3.3"
     },
 	"require-dev": {
-        "phpspec/phpspec": "^4.2"
+        "phpspec/phpspec": "^4.2",
+        "php-mock/php-mock-prophecy": "^0.0.2"
     },
 	"autoload": {
         "psr-4": {
