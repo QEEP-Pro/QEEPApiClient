@@ -17,7 +17,7 @@
         "symfony/serializer": "^3.3",
         "symfony/property-access": "^3.3"
     },
-	"require-dev": {
+    "require-dev": {
         "phpspec/phpspec": "^4.2",
         "php-mock/php-mock-prophecy": "^0.0.2"
     },
