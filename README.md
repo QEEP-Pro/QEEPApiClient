@@ -1,6 +1,8 @@
 QEEP Api Client
 =========================
 
+`composer require qeep-pro/qeep-api-client`
+
 If you use Symfony, add this text in services.yaml:
 
 ```
