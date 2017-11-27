@@ -12,9 +12,8 @@
     "config": {
         "bin-dir": "bin"
     },
-    "type": "project",
     "require": {
-		"php": ">=7.1",
+        "php": ">=7.1",
         "symfony/serializer": "^3.3",
         "symfony/property-access": "^3.3"
     },
