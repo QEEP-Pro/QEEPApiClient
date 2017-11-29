@@ -4,6 +4,7 @@ namespace QEEP\QEEPApiClient;
 
 use QEEP\QEEPApiClient\Model\Order;
 use QEEP\QEEPApiClient\Model\OrderStatus;
+use QEEP\QEEPApiClient\Model\Question;
 use QEEP\QEEPApiClient\Model\Tag;
 use QEEP\QEEPApiClient\Model\Product;
 use QEEP\QEEPApiClient\Model\Setting;
@@ -133,6 +134,23 @@ class ApiClient
         }
 
         return $tags;
+    }
+
+    public function getQuestions() : array
+    {
+        $rawQuestions = $this->callApiV1Method(
+            self::API_ROUTE_PREFIX . 'list.json/getQuestions',
+            Question::class
+        );
+
+        $questions = [];
+        foreach ($rawQuestions as $rawQuestion) {
+            $questions[] = $this
+                ->serializer
+                ->denormalize($rawQuestion, Question::class);
+        }
+
+        return $questions;
     }
 
     /** @return ArticleType[] */
