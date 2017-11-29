@@ -1,6 +1,6 @@
 <?php
 
-namespace QEEP\QeepApiClient\Model;
+namespace QEEP\QEEPApiClient\Model;
 
 
 class Product
