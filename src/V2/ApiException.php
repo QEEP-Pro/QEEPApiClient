@@ -10,7 +10,7 @@ class ApiException extends \Exception
     public function __construct(
         $curlError,
         $apiErrorCode,
-        array $apiParams,
+        $apiParams,
         string $message = "",
         int $code = 0,
         Throwable $previous = null
