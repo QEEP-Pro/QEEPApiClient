@@ -10,6 +10,9 @@ use Symfony\Component\Serializer\Serializer;
 
 class ApiClient
 {
+    const HTTP_GET = 'HTTP_GET';
+    const HTTP_POST = 'HTTP_POST';
+
     const API_ROUTE_PREFIX = '/api/v2/';
 
     const API_IMAGE_PREFIX = 'images.';
@@ -64,7 +67,7 @@ class ApiClient
     private function callApiV2Method(
         string $urlSuffix,
         array $params = [],
-        string $method = HTTP_METH_GET
+        string $method = self::HTTP_GET
     )
     {
         $params = http_build_query($params + $this->getAuthParams($params));
@@ -72,12 +75,12 @@ class ApiClient
         $url = $this->url . self::API_ROUTE_PREFIX . $urlSuffix;
 
         switch ($method) {
-            case HTTP_METH_GET:
+            case self::HTTP_GET:
                 if ($params) {
                     $url .= '?' . $params;
                 }
                 break;
-            case HTTP_METH_POST:
+            case self::HTTP_POST:
                 curl_setopt($ch, CURLOPT_POST, 1);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
                 break;
