@@ -7,6 +7,12 @@ use Throwable;
 
 class ApiException extends \Exception
 {
+    private $curlError;
+
+    private $apiErrorCode;
+
+    private $apiParams;
+
     public function __construct(
         $curlError,
         $apiErrorCode,
@@ -17,5 +23,24 @@ class ApiException extends \Exception
     )
     {
         parent::__construct($message, $code, $previous);
+
+        $this->curlError = $curlError;
+        $this->apiErrorCode = $apiErrorCode;
+        $this->apiParams = $apiParams;
+    }
+
+    public function getCurlError()
+    {
+        return $this->curlError;
+    }
+
+    public function getApiErrorCode()
+    {
+        return $this->apiErrorCode;
+    }
+
+    public function getApiParams()
+    {
+        return $this->apiParams;
     }
 }
