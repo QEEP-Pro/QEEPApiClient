@@ -1,16 +1,23 @@
 <?php
 
-namespace spec\QEEP\QEEPApiClient;
+namespace spec\QEEP\QEEPApiClient\V2;
 
-
+use QEEP\QEEPApiClient\V2\ApiClient;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class ApiClientSpec extends ObjectBehavior
 {
-    public function it_is_initializable()
+    function it_is_initializable()
     {
         $this->beConstructedWith(...$this->getApiClientParams());
+    }
+
+    function it_is_able_to_return_cities()
+    {
+        $this->beConstructedWith(...$this->getApiClientParams());
+
+        $this->getCities()->shouldReturn(['Томск', 'Николаев']);
     }
 
     private function getApiClientParams()

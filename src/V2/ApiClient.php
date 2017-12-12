@@ -64,6 +64,12 @@ class ApiClient
         return $questions;
     }
 
+    /** @return string[] */
+    public function getCities() : array
+    {
+        return $this->callApiV2Method('cities/get');
+    }
+
     private function callApiV2Method(
         string $urlSuffix,
         array $params = [],
