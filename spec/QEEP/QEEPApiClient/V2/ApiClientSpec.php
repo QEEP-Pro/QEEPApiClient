@@ -4,7 +4,6 @@ namespace spec\QEEP\QEEPApiClient\V2;
 
 use QEEP\QEEPApiClient\V2\ApiClient;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class ApiClientSpec extends ObjectBehavior
 {
