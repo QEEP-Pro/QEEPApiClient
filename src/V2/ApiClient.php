@@ -97,8 +97,6 @@ class ApiClient
             $products[] = $product;
         }
 
-        var_dump($products[0]->getVariants()[0]->getParameters());
-
         return $products;
     }
 
