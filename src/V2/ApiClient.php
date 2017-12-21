@@ -3,6 +3,8 @@
 namespace QEEP\QEEPApiClient\V2;
 
 
+use JMS\Serializer\SerializerBuilder;
+use QEEP\QEEPApiClient\V2\Model\Category;
 use QEEP\QEEPApiClient\V2\Model\CustomQuestion;
 use QEEP\QEEPApiClient\V2\Model\Option;
 use QEEP\QEEPApiClient\V2\Model\Parameter;
@@ -34,6 +36,8 @@ class ApiClient
 
     private $serializer;
 
+    private $jms;
+
     public function __construct(
         int $clientId,
         string $clientSecret,
@@ -51,6 +55,17 @@ class ApiClient
         $this->serializer = new Serializer(
             [new ObjectNormalizer(), new ArrayDenormalizer()],
             [new JsonEncoder()]
+        );
+
+        $this->jms = SerializerBuilder::create()->build();
+    }
+
+    /** @return Category[] */
+    public function getCategories() : array
+    {
+        return $this->deserializeArray(
+            $this->callApiV2Method('categories/get'),
+            Category::class
         );
     }
 
@@ -156,6 +171,18 @@ class ApiClient
         }
 
         return json_decode($response, true);
+    }
+
+    private function deserializeArray(array $rawEntities, string $className) : array
+    {
+        $jms = $this->jms;
+
+        return array_map(
+            function ($entity) use ($jms, $className) {
+                return $jms->fromArray($entity, $className);
+            },
+            $rawEntities
+        );
     }
 
     private function getAuthParams(array $params) : array

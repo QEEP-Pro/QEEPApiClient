@@ -22,9 +22,9 @@ class ApiClientSpec extends ObjectBehavior
     private function getApiClientParams()
     {
         return [
-            18,
-            'cde1svywpbsw0wk80o8gww4884w00gc',
-            'https://demo.qeep.pro',
+            1,
+            '2cwnrsem08u8o0cw0o8gwcgws0swosg',
+            'http://qeep.develop',
             'shop.qeep.pro',
             'https://demo.qeep.pro/catalog/',
         ];
