@@ -21,6 +21,8 @@ class Order
 
     protected $purchases;
 
+    protected $allowSpam = true;
+
     public function __construct()
     {
         $this->purchases = [];
@@ -139,6 +141,18 @@ class Order
     public function setPurchases(array $purchases) : Order
     {
         $this->purchases = $purchases;
+
+        return $this;
+    }
+
+    public function getAllowSpam() : bool
+    {
+        return $this->allowSpam;
+    }
+
+    public function setAllowSpam(bool $allowSpam) : Order
+    {
+        $this->allowSpam = $allowSpam;
 
         return $this;
     }
