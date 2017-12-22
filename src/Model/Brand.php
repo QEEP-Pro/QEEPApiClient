@@ -1,6 +1,6 @@
 <?php
 
-namespace QEEP\QEEPApiClient\V2\Model;
+namespace QEEP\QEEPApiClient\Model;
 
 
 use JMS\Serializer\Annotation as JMS;
@@ -12,12 +12,6 @@ class Brand
 
     /** @JMS\Type("string") */
     protected $name;
-
-    /** @JMS\Type("string") */
-    protected $description;
-
-    /** @JMS\Type("string") */
-    protected $image;
 
     public function getId() : ?int
     {
@@ -31,6 +25,20 @@ class Brand
         return $this;
     }
 
+    // QEEP-Pro отдает `code` вместо `id`
+
+    public function setCode(?string $code) : Brand
+    {
+        $this->id = $code;
+
+        return $this;
+    }
+
+    public function getCode() : ?int
+    {
+        return $this->id;
+    }
+
     public function getName() : ?string
     {
         return $this->name;
@@ -42,28 +50,18 @@ class Brand
 
         return $this;
     }
+// QEEP-Pro отдает `value` вместо `name`
 
-    public function getDescription() :  ?string
+    public function setValue(?string $value) : Brand
     {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description) : Brand
-    {
-        $this->description = $description;
+        $this->name = $value;
 
         return $this;
     }
 
-    public function getImage() : ?string
+    public function getValue() : ?string
     {
-        return $this->image;
+        return $this->name;
     }
 
-    public function setImage(?string $image) : Brand
-    {
-        $this->image = $image;
-
-        return $this;
-    }
 }

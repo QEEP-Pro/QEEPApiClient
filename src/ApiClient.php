@@ -11,6 +11,7 @@ use QEEP\QEEPApiClient\Model\Setting;
 use QEEP\QEEPApiClient\Model\Article;
 use QEEP\QEEPApiClient\Model\ArticleType;
 
+use QEEP\QEEPApiClient\Model\Brand;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
@@ -208,6 +209,25 @@ class ApiClient
         }
 
         return $settings;
+    }
+
+    /** @return Brand[] */
+    public function getBrands() : array
+    {
+        /** @var array $rawBrands */
+        $rawBrands = $this->callApiV1Method(
+            self::API_ROUTE_PREFIX . 'list.json/getBrands',
+            Brand::class
+        );
+
+        $brands = [];
+        foreach ($rawBrands as $rawBrand) {
+            $brands[] = $this
+                ->serializer
+                ->denormalize($rawBrand, Brand::class);
+        }
+
+        return $brands;
     }
 
     private function getAuthParams(array $params) : array
