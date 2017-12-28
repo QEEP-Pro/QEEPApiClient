@@ -112,8 +112,6 @@ class ApiClient
             $products[] = $product;
         }
 
-        var_dump($products);
-
         return $products;
     }
 
