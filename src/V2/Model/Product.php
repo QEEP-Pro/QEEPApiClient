@@ -29,6 +29,8 @@ class Product
 
     protected $variants;
 
+    protected $images;
+
     public function getId() :?int
     {
         return $this->id;
@@ -171,6 +173,18 @@ class Product
     public function setVariants(array  $variants) : Product
     {
         $this->variants = $variants;
+
+        return $this;
+    }
+
+    public function getImages() : array
+    {
+        return $this->images;
+    }
+
+    public function setImages(array $images) : Product
+    {
+        $this->images = $images;
 
         return $this;
     }
