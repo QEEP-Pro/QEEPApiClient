@@ -4,6 +4,7 @@ namespace QEEP\QEEPApiClient\V2;
 
 
 use JMS\Serializer\SerializerBuilder;
+use QEEP\QEEPApiClient\V2\Model\Brand;
 use QEEP\QEEPApiClient\V2\Model\Category;
 use QEEP\QEEPApiClient\V2\Model\CustomQuestion;
 use QEEP\QEEPApiClient\V2\Model\Option;
@@ -66,6 +67,15 @@ class ApiClient
         return $this->deserializeArray(
             $this->callApiV2Method('categories/get'),
             Category::class
+        );
+    }
+
+    /** @return array Brand[] */
+    public function getBrands() : array
+    {
+        return $this->deserializeArray(
+            $this->callApiV2Method('brands/get'),
+            Brand::class
         );
     }
 
