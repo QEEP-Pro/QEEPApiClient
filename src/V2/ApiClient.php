@@ -79,66 +79,26 @@ class ApiClient
         );
     }
 
-    // TODO: make denoramalize recursive
     /** @return Product[] */
     public function getProducts() : array
     {
-        $rawProducts = $this->callApiV2Method('products/get');
+        var_dump($this->callApiV2Method('products/get'));
+        var_dump('-----------');
 
-        $products = [];
-        foreach ($rawProducts as $rawProduct) {
-            /** @var Product $product */
-            $product = $this
-                ->serializer
-                ->denormalize($rawProduct, Product::class);
-
-            $options = [];
-            foreach ($product->getOptions() as $rawOption) {
-                $options[] = $this
-                    ->serializer
-                    ->denormalize($rawOption, Option::class);
-            }
-            $product->setOptions($options);
-
-            $variants = [];
-            foreach ($product->getVariants() as $rawVariant) {
-                /** @var Variant $variant */
-                $variant = $this
-                    ->serializer
-                    ->denormalize($rawVariant, Variant::class);
-
-                $parameters = [];
-                foreach ($variant->getParameters() as $rawParameter) {
-                    $parameters[] = $this
-                        ->serializer
-                        ->denormalize($rawParameter, Parameter::class);
-                }
-                $variant->setParameters($parameters);
-
-                $variants[] = $variant;
-            }
-            $product->setVariants($variants);
-
-            $products[] = $product;
-        }
-
-        return $products;
+        return $this->deserializeArray(
+            $this->callApiV2Method('products/get'),
+            Product::class
+        );
     }
 
-    /** @return CustomQuestion[] */
-    public function getCustomQuestions() : array
-    {
-        $rawQuestions = $this->callApiV2Method('questions/get');
-
-        $questions = [];
-        foreach ($rawQuestions as $rawQuestion) {
-            $questions[] = $this
-                ->serializer
-                ->denormalize($rawQuestion, CustomQuestion::class);
-        }
-
-        return $questions;
-    }
+     /** @return CustomQuestion[] */
+     public function getCustomQuestions() : array
+     {
+         return $this->deserializeArray(
+             $this->callApiV2Method('questions/get'),
+             CustomQuestion::class
+         );
+     }
 
     /** @return string[] */
     public function getCities() : array

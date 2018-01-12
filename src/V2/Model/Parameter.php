@@ -2,13 +2,17 @@
 
 namespace QEEP\QEEPApiClient\V2\Model;
 
+use JMS\Serializer\Annotation as JMS;
 
 class Parameter
 {
+    /** @JMS\Type("integer") */
     protected $id;
 
+    /** @JMS\Type("string") */
     protected $name;
 
+    /** @JMS\Type("string") */
     protected $characteristic;
 
     public function getId() : ?int

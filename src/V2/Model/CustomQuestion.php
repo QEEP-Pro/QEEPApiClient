@@ -2,15 +2,20 @@
 
 namespace QEEP\QEEPApiClient\V2\Model;
 
+use JMS\Serializer\Annotation as JMS;
 
 class CustomQuestion
 {
+    /** @JMS\Type("integer") */
     protected $id;
 
+    /** @JMS\Type("string") */
     protected $name;
 
+    /** @JMS\Type("string") */
     protected $body;
 
+    /** @JMS\Type("array<string>") */
     protected $answers;
 
     public function getId() : ?int
