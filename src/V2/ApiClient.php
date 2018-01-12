@@ -70,7 +70,7 @@ class ApiClient
         );
     }
 
-    /** @return array Brand[] */
+    /** @return Brand[] */
     public function getBrands() : array
     {
         return $this->deserializeArray(
