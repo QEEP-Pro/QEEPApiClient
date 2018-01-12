@@ -82,9 +82,6 @@ class ApiClient
     /** @return Product[] */
     public function getProducts() : array
     {
-        var_dump($this->callApiV2Method('products/get'));
-        var_dump('-----------');
-
         return $this->deserializeArray(
             $this->callApiV2Method('products/get'),
             Product::class
