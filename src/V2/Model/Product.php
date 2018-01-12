@@ -2,34 +2,54 @@
 
 namespace QEEP\QEEPApiClient\V2\Model;
 
+use JMS\Serializer\Annotation as JMS;
 
 class Product
 {
+    /** @JMS\Type("integer") */
     protected $id;
 
+    /** @JMS\Type("string") */
     protected $name;
 
+    /** @JMS\Type("float") */
     protected $price;
 
+    /** @JMS\Type("integer") */
     protected $quantity;
 
+     /** @JMS\Type("string") */
     protected $description;
 
+     /** @JMS\Type("string") */
     protected $body;
 
+     /** @JMS\Type("boolean") */
     protected $visible;
 
+     /** @JMS\Type("integer") */
     protected $position;
 
+     /** @JMS\Type("DateTime") */
     protected $created;
 
+    /** @JMS\Type("boolean") */
     protected $featured;
 
+    /** @JMS\Type("array<QEEP\QEEPApiClient\V2\Model\Option>") */
     protected $options;
 
+    /** @JMS\Type("array<QEEP\QEEPApiClient\V2\Model\Variant>") */
     protected $variants;
 
+    /** @JMS\Type("array<string>") */
     protected $images;
+
+    /** @JMS\Type("QEEP\QEEPApiClient\V2\Model\Brand") */
+    protected $brand;
+
+    /** @JMS\Type("array<QEEP\QEEPApiClient\V2\Model\Category>") */
+    protected $categories;
 
     public function getId() :?int
     {
@@ -177,7 +197,7 @@ class Product
         return $this;
     }
 
-    public function getImages() : array
+    public function getImages() : ?array
     {
         return $this->images;
     }
@@ -185,6 +205,30 @@ class Product
     public function setImages(array $images) : Product
     {
         $this->images = $images;
+
+        return $this;
+    }
+
+    public function getBrand() : ?Brand
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(array  $brand) : Product
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    public function getCategories() : ?array
+    {
+        return $this->categories;
+    }
+
+    public function setCategories(array  $categories) : Product
+    {
+        $this->categories = $categories;
 
         return $this;
     }

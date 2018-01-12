@@ -2,19 +2,26 @@
 
 namespace QEEP\QEEPApiClient\V2\Model;
 
+use JMS\Serializer\Annotation as JMS;
 
 class Variant
 {
+    /** @JMS\Type("integer") */
     protected $id;
 
+    /** @JMS\Type("string") */
     protected $name;
 
+    /** @JMS\Type("string") */
     protected $sku;
 
+    /** @JMS\Type("integer") */
     protected $quantity;
 
+    /** @JMS\Type("float") */
     protected $price;
 
+    /** @JMS\Type("array<QEEP\QEEPApiClient\V2\Model\Parameter>") */
     protected $parameters;
 
     public function getId() : ?int
