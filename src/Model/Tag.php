@@ -20,9 +20,18 @@ class Tag
         return $this->id;
     }
 
-    public function setId(int $id) : Tag
+    // QEEP-Pro отдает настоящий id в поле code
+
+//    public function setId(int $id) : Tag
+//    {
+//        $this->id = $id;
+//
+//        return $this;
+//    }
+
+    public function setCode(int $code) : Tag
     {
-        $this->id = $id;
+        $this->id = $code;
 
         return $this;
     }
