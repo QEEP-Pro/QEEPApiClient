@@ -27,6 +27,8 @@ class Article
 
     protected $images;
 
+    protected $link;
+
     public function __construct()
     {
         $this->created = new \DateTime();
@@ -170,6 +172,18 @@ class Article
     public function setImages(array $images) : Article
     {
         $this->images = $images;
+
+        return $this;
+    }
+
+    public function getLink() : ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(string $link) : Article
+    {
+        $this->link = $link;
 
         return $this;
     }
