@@ -28,7 +28,10 @@ class Category
     /** @JMS\Type("boolean") */
     protected $visible;
 
-    /** @JMS\Type("boolean") */
+    /**
+     * @JMS\Type("boolean")
+     * @JMS\SerializedName("brandsAsSubcategories")
+     */
     protected $brandsAsSubcategories;
 
     /** @JMS\Type("array<QEEP\QEEPApiClient\V2\Model\Category>") */
