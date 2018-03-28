@@ -6,6 +6,7 @@ namespace QEEP\QEEPApiClient\V2;
 use JMS\Serializer\SerializerBuilder;
 use QEEP\QEEPApiClient\V2\Model\Brand;
 use QEEP\QEEPApiClient\V2\Model\Category;
+use QEEP\QEEPApiClient\V2\Model\CompanyInfo;
 use QEEP\QEEPApiClient\V2\Model\CustomQuestion;
 use QEEP\QEEPApiClient\V2\Model\Option;
 use QEEP\QEEPApiClient\V2\Model\Parameter;
@@ -82,9 +83,6 @@ class ApiClient
     /** @return Product[] */
     public function getProducts() : array
     {
-        var_dump($this->callApiV2Method('products/get'));
-        var_dump('-----------');
-
         return $this->deserializeArray(
             $this->callApiV2Method('products/get'),
             Product::class
@@ -169,5 +167,14 @@ class ApiClient
             'client_id' => $this->clientId,
             'access_token' => md5($this->clientId . $this->clientSecret . $paramsString),
         ];
+    }
+
+    /** @return CompanyInfo[] */
+    private function getInfo(): array
+    {
+        return $this->deserializeArray(
+            $this->callApiV2Method('info/get'),
+            CompanyInfo::class
+        );
     }
 }
