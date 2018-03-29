@@ -15,6 +15,9 @@ class Option
     /** @JMS\Type("string") */
     protected $value;
 
+    /** @JMS\Type("boolean") */
+    protected $filterable = false;
+
     public function getId() : ?int
     {
         return $this->id;
@@ -47,6 +50,18 @@ class Option
     public function setValue(?string $value) : Option
     {
         $this->value = $value;
+
+        return $this;
+    }
+
+    public function getFilterable() : bool
+    {
+        return $this->filterable;
+    }
+
+    public function setFilterable(bool $filterable) : Option
+    {
+        $this->filterable = $filterable;
 
         return $this;
     }
