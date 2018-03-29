@@ -3,9 +3,7 @@
 namespace QEEP\QEEPApiClient\V2\Model;
 
 
-use JMS\Serializer\Annotation as JMS;
-
-class CompanyInfo
+class CompanyContacts
 {
     /** @JMS\Type("string") */
     protected $key;
@@ -18,7 +16,7 @@ class CompanyInfo
         return $this->key;
     }
 
-    public function setKey(string $key): CompanyInfo
+    public function setKey(string $key): CompanyContacts
     {
         $this->key = $key;
 
@@ -30,7 +28,7 @@ class CompanyInfo
         return $this->value;
     }
 
-    public function setValue(?string $value): CompanyInfo
+    public function setValue(?string $value): CompanyContacts
     {
         $this->value = $value;
 
