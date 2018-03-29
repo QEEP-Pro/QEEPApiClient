@@ -6,6 +6,7 @@ namespace QEEP\QEEPApiClient\V2;
 use JMS\Serializer\SerializerBuilder;
 use QEEP\QEEPApiClient\V2\Model\Brand;
 use QEEP\QEEPApiClient\V2\Model\Category;
+use QEEP\QEEPApiClient\V2\Model\CompanyContacts;
 use QEEP\QEEPApiClient\V2\Model\CompanyInfo;
 use QEEP\QEEPApiClient\V2\Model\CustomQuestion;
 use QEEP\QEEPApiClient\V2\Model\Option;
@@ -110,6 +111,15 @@ class ApiClient
         return $this->deserializeArray(
             $this->callApiV2Method('info/get'),
             CompanyInfo::class
+        );
+    }
+
+    /** @return CompanyContacts[] */
+    public function getContacts(): array
+    {
+        return $this->deserializeArray(
+            $this->callApiV2Method('contacts/get'),
+            CompanyContacts::class
         );
     }
 
