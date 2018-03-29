@@ -16,7 +16,7 @@ class CompanyContacts
         return $this->key;
     }
 
-    public function setId(string $key): CompanyContacts
+    public function setKey(string $key): CompanyContacts
     {
         $this->key = $key;
 
