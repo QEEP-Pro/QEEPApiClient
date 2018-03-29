@@ -103,6 +103,15 @@ class ApiClient
     {
         return $this->callApiV2Method('cities/get');
     }
+    
+    /** @return CompanyInfo[] */
+    public function getInfo(): array
+    {
+        return $this->deserializeArray(
+            $this->callApiV2Method('info/get'),
+            CompanyInfo::class
+        );
+    }
 
     private function callApiV2Method(
         string $urlSuffix,
@@ -167,14 +176,5 @@ class ApiClient
             'client_id' => $this->clientId,
             'access_token' => md5($this->clientId . $this->clientSecret . $paramsString),
         ];
-    }
-
-    /** @return CompanyInfo[] */
-    private function getInfo(): array
-    {
-        return $this->deserializeArray(
-            $this->callApiV2Method('info/get'),
-            CompanyInfo::class
-        );
     }
 }
