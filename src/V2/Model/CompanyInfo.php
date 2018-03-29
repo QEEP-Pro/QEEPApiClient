@@ -18,7 +18,7 @@ class CompanyInfo
         return $this->key;
     }
 
-    public function setId(string $key): CompanyInfo
+    public function setKey(string $key): CompanyInfo
     {
         $this->key = $key;
 
