@@ -117,7 +117,7 @@ class ApiClient
     {
         return $this->deserializeArray(
             $this->callApiV2Method('contacts/get'),
-            CompanyContacts::class
+            CompanyContact::class
         );
     }
 

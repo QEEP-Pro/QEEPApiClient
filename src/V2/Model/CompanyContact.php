@@ -2,6 +2,7 @@
 
 namespace QEEP\QEEPApiClient\V2\Model;
 
+use JMS\Serializer\Annotation as JMS;
 
 class CompanyContact
 {
