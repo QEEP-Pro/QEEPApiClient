@@ -3,7 +3,7 @@
 namespace QEEP\QEEPApiClient\V2\Model;
 
 
-class CompanyContacts
+class SocialLink
 {
     /** @JMS\Type("string") */
     protected $key;
@@ -16,7 +16,7 @@ class CompanyContacts
         return $this->key;
     }
 
-    public function setKey(string $key): CompanyContacts
+    public function setKey(string $key): SocialLink
     {
         $this->key = $key;
 
@@ -28,7 +28,7 @@ class CompanyContacts
         return $this->value;
     }
 
-    public function setValue(?string $value): CompanyContacts
+    public function setValue(?string $value): SocialLink
     {
         $this->value = $value;
 
