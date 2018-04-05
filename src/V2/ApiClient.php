@@ -6,13 +6,11 @@ namespace QEEP\QEEPApiClient\V2;
 use JMS\Serializer\SerializerBuilder;
 use QEEP\QEEPApiClient\V2\Model\Brand;
 use QEEP\QEEPApiClient\V2\Model\Category;
-use QEEP\QEEPApiClient\V2\Model\CompanyContacts;
+use QEEP\QEEPApiClient\V2\Model\CompanyContact;
 use QEEP\QEEPApiClient\V2\Model\CompanyInfo;
 use QEEP\QEEPApiClient\V2\Model\CustomQuestion;
-use QEEP\QEEPApiClient\V2\Model\Option;
-use QEEP\QEEPApiClient\V2\Model\Parameter;
 use QEEP\QEEPApiClient\V2\Model\Product;
-use QEEP\QEEPApiClient\V2\Model\Variant;
+use QEEP\QEEPApiClient\V2\Model\SocialLink;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
@@ -114,12 +112,21 @@ class ApiClient
         );
     }
 
-    /** @return CompanyContacts[] */
+    /** @return CompanyContact[] */
     public function getContacts(): array
     {
         return $this->deserializeArray(
             $this->callApiV2Method('contacts/get'),
-            CompanyContacts::class
+            CompanyContact::class
+        );
+    }
+
+    /** @return SocialLink[] */
+    public function getSocialLinks(): array
+    {
+        return $this->deserializeArray(
+            $this->callApiV2Method('links/get'),
+            SocialLink::class
         );
     }
 

@@ -22,7 +22,8 @@
     },
     "require-dev": {
         "phpspec/phpspec": "^4.2",
-        "php-mock/php-mock-prophecy": "^0.0.2"
+        "php-mock/php-mock-prophecy": "^0.0.2",
+        "php-mock/php-mock": "1.0"
     },
     "autoload": {
         "psr-4": {
