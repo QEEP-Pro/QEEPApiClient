@@ -2,7 +2,6 @@
 
 namespace QEEP\QEEPApiClient\Model;
 
-
 class Product
 {
     protected $id;
@@ -26,63 +25,63 @@ class Product
     public function __construct()
     {
         $this->categoryIds = [];
-        $this->photos = [];
+        $this->photos      = [];
     }
 
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(int $id) : Product
+    public function setId(int $id): Product
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function getParentId() : ?int
+    public function getParentId(): ?int
     {
         return $this->parentId;
     }
 
-    public function setParentId(int $parentId) : Product
+    public function setParentId(int $parentId): Product
     {
         $this->parentId = $parentId;
 
         return $this;
     }
 
-    public function getTitle() : ?string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function setTitle(string $title) : Product
+    public function setTitle(string $title): Product
     {
         $this->title = $title;
 
         return $this;
     }
 
-    public function getPrice() : ?int
+    public function getPrice(): ?int
     {
         return $this->price;
     }
 
-    public function setPrice(int $price) : Product
+    public function setPrice(int $price): Product
     {
         $this->price = $price;
 
         return $this;
     }
 
-    public function getAmount() : ?int
+    public function getAmount(): ?int
     {
         return $this->amount;
     }
 
-    public function setAmount(int $amount) : Product
+    public function setAmount(int $amount): Product
     {
         $this->amount = $amount;
 
@@ -101,24 +100,24 @@ class Product
         return $this;
     }
 
-    public function getBrandId() : ?int
+    public function getBrandId(): ?int
     {
         return $this->brandId;
     }
 
-    public function setBrandId(int $brandId) : Product
+    public function setBrandId(int $brandId): Product
     {
         $this->brandId = $brandId;
 
         return $this;
     }
 
-    public function getDescription() : ?string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description) : Product
+    public function setDescription(string $description): Product
     {
         $this->description = $description;
 
@@ -139,7 +138,7 @@ class Product
 //        return $this;
 //    }
 
-    public function setPhoto(array $photo) : Product
+    public function setPhoto(array $photo): Product
     {
         $this->photos = $photo;
 
@@ -147,7 +146,7 @@ class Product
     }
 
     // return first photo
-    public function getPhoto() : ?string
+    public function getPhoto(): ?string
     {
         return $this->photos ? $this->photos[0] : null;
     }

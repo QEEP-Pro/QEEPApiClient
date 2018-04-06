@@ -10,7 +10,6 @@ use QEEP\QEEPApiClient\Model\Product;
 use QEEP\QEEPApiClient\Model\Setting;
 use QEEP\QEEPApiClient\Model\Article;
 use QEEP\QEEPApiClient\Model\ArticleType;
-
 use QEEP\QEEPApiClient\Model\Brand;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
@@ -41,13 +40,12 @@ class ApiClient
         string $crmUrl,
         string $salesChannel,
         string $imageUrl
-    )
-    {
-        $this->clientId = $clientId;
+    ) {
+        $this->clientId     = $clientId;
         $this->clientSecret = $clientSecret;
-        $this->url = $crmUrl;
+        $this->url          = $crmUrl;
         $this->salesChannel = $salesChannel;
-        $this->imageUrl = $imageUrl;
+        $this->imageUrl     = $imageUrl;
 
         $this->serializer = new Serializer(
             [new ObjectNormalizer(null, new CamelCaseToSnakeCaseNameConverter())],
@@ -55,7 +53,7 @@ class ApiClient
         );
     }
 
-    public function createOrder(Order $order) : string
+    public function createOrder(Order $order): string
     {
         $order->setSalesChannel($this->salesChannel);
 
@@ -65,14 +63,14 @@ class ApiClient
             $this->serializer->normalize($order),
             'POST');
 
-        if ($response['status'] === 'success') {
+        if ('success' === $response['status']) {
             return 'success';
         } else {
             throw new ApiException();
         }
     }
 
-    public function getOrderStatusCode(int $orderNumber) : string
+    public function getOrderStatusCode(int $orderNumber): string
     {
         $status = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'orders.json/getStatus',
@@ -84,7 +82,7 @@ class ApiClient
     }
 
     /** @return OrderStatus[] */
-    public function getOrdersStatuses() : array
+    public function getOrdersStatuses(): array
     {
         $rawStatuses = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'list.json/getStatuses',
@@ -102,7 +100,7 @@ class ApiClient
     }
 
     /** @return Product[] */
-    public function getProducts() : array
+    public function getProducts(): array
     {
         $rawProducts = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'catalog.json/getAll',
@@ -120,7 +118,7 @@ class ApiClient
     }
 
     /** @return Tag[] */
-    public function getTags() : array
+    public function getTags(): array
     {
         $rawTags = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'list.json/getCategories',
@@ -137,7 +135,7 @@ class ApiClient
         return $tags;
     }
 
-    public function getQuestions() : array
+    public function getQuestions(): array
     {
         $rawQuestions = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'list.json/getQuestions',
@@ -155,7 +153,7 @@ class ApiClient
     }
 
     /** @return ArticleType[] */
-    public function getArticleTypes() : array
+    public function getArticleTypes(): array
     {
         /** @var array $rawArticleTypes */
         $rawArticleTypes = $this->callApiV1Method(
@@ -174,7 +172,7 @@ class ApiClient
     }
 
     /** @return Article[] */
-    public function getArticles() : array
+    public function getArticles(): array
     {
         /** @var array $rawArticles */
         $rawArticles = $this->callApiV1Method(
@@ -193,7 +191,7 @@ class ApiClient
     }
 
     /** @return Setting[] */
-    public function getSettings() : array
+    public function getSettings(): array
     {
         /** @var array $rawSettings */
         $rawSettings = $this->callApiV1Method(
@@ -212,7 +210,7 @@ class ApiClient
     }
 
     /** @return Brand[] */
-    public function getBrands() : array
+    public function getBrands(): array
     {
         /** @var array $rawBrands */
         $rawBrands = $this->callApiV1Method(
@@ -230,7 +228,7 @@ class ApiClient
         return $brands;
     }
 
-    private function getAuthParams(array $params) : array
+    private function getAuthParams(array $params): array
     {
         ksort($params);
         $paramsString = '';
@@ -241,7 +239,7 @@ class ApiClient
         }
 
         return [
-            'client_id' => $this->clientId,
+            'client_id'    => $this->clientId,
             'access_token' => md5($this->clientId . $this->clientSecret . $paramsString),
         ];
     }
@@ -251,11 +249,10 @@ class ApiClient
         string $className,
         array $params = [],
         string $method = 'GET'
-    )
-    {
+    ) {
         $params = http_build_query($params + $this->getAuthParams($params));
-        $ch = curl_init();
-        $url = $this->url . $urlSuffix;
+        $ch     = curl_init();
+        $url    = $this->url . $urlSuffix;
 
         switch ($method) {
             case 'GET':
@@ -273,11 +270,11 @@ class ApiClient
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $response = curl_exec($ch);
-        $error = curl_error($ch);
-        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $error    = curl_error($ch);
+        $code     = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
-        if ($error || $code != 200) {
+        if ($error || 200 != $code) {
             throw new ApiException('Curl returned error' . $error . ' code: ' . $code . ' params ' . $params);
         }
 

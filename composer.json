@@ -12,6 +12,11 @@
     "config": {
         "bin-dir": "bin"
     },
+    "scripts": {
+        "test": "php bin/phpspec run",
+        "lint": "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix ./src -v --dry-run --stop-on-violation --using-cache=no",
+        "fix-style": "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix ./src"
+    },
     "require": {
         "php": ">=7.1",
         "symfony/serializer": "^4.0 | ^3.0",
@@ -23,7 +28,8 @@
     "require-dev": {
         "phpspec/phpspec": "^4.2",
         "php-mock/php-mock-prophecy": "^0.0.2",
-        "php-mock/php-mock": "1.0"
+        "php-mock/php-mock": "1.0",
+        "friendsofphp/php-cs-fixer": "^2.11"
     },
     "autoload": {
         "psr-4": {

@@ -15,36 +15,36 @@ class Parameter
     /** @JMS\Type("string") */
     protected $characteristic;
 
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(?int $id) : Parameter
+    public function setId(?int $id): Parameter
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(?string $name) : Parameter
+    public function setName(?string $name): Parameter
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getCharacteristic() : ?string
+    public function getCharacteristic(): ?string
     {
         return $this->characteristic;
     }
 
-    public function setCharacteristic(?string $characteristic) : Parameter
+    public function setCharacteristic(?string $characteristic): Parameter
     {
         $this->characteristic = $characteristic;
 

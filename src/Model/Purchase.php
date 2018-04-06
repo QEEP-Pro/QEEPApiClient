@@ -2,7 +2,6 @@
 
 namespace QEEP\QEEPApiClient\Model;
 
-
 class Purchase
 {
     protected $id;
@@ -18,36 +17,36 @@ class Purchase
 //        return $this->id;
 //    }
 
-    public function getCode() : ?int
+    public function getCode(): ?int
     {
         return $this->id;
     }
 
-    public function setId(int $id) : Purchase
+    public function setId(int $id): Purchase
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function getPrice() : ?int
+    public function getPrice(): ?int
     {
         return $this->price;
     }
 
-    public function setPrice(int $price) : Purchase
+    public function setPrice(int $price): Purchase
     {
         $this->price = $price;
 
         return $this;
     }
 
-    public function getAmount() : ?int
+    public function getAmount(): ?int
     {
         return $this->amount;
     }
 
-    public function setAmount(int $amount) : Purchase
+    public function setAmount(int $amount): Purchase
     {
         $this->amount = $amount;
 

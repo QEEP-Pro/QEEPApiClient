@@ -2,7 +2,6 @@
 
 namespace QEEP\QEEPApiClient\V2;
 
-
 use JMS\Serializer\SerializerBuilder;
 use QEEP\QEEPApiClient\V2\Model\Brand;
 use QEEP\QEEPApiClient\V2\Model\Category;
@@ -18,7 +17,7 @@ use Symfony\Component\Serializer\Serializer;
 
 class ApiClient
 {
-    const HTTP_GET = 'HTTP_GET';
+    const HTTP_GET  = 'HTTP_GET';
     const HTTP_POST = 'HTTP_POST';
 
     const API_ROUTE_PREFIX = '/api/v2/';
@@ -45,13 +44,12 @@ class ApiClient
         string $crmUrl,
         string $salesChannel,
         string $imageUrl
-    )
-    {
-        $this->clientId = $clientId;
+    ) {
+        $this->clientId     = $clientId;
         $this->clientSecret = $clientSecret;
-        $this->url = $crmUrl;
+        $this->url          = $crmUrl;
         $this->salesChannel = $salesChannel;
-        $this->imageUrl = $imageUrl;
+        $this->imageUrl     = $imageUrl;
 
         $this->serializer = new Serializer(
             [new ObjectNormalizer(), new ArrayDenormalizer()],
@@ -62,7 +60,7 @@ class ApiClient
     }
 
     /** @return Category[] */
-    public function getCategories() : array
+    public function getCategories(): array
     {
         return $this->deserializeArray(
             $this->callApiV2Method('categories/get'),
@@ -71,7 +69,7 @@ class ApiClient
     }
 
     /** @return Brand[] */
-    public function getBrands() : array
+    public function getBrands(): array
     {
         return $this->deserializeArray(
             $this->callApiV2Method('brands/get'),
@@ -80,7 +78,7 @@ class ApiClient
     }
 
     /** @return Product[] */
-    public function getProducts() : array
+    public function getProducts(): array
     {
         return $this->deserializeArray(
             $this->callApiV2Method('products/get'),
@@ -88,21 +86,21 @@ class ApiClient
         );
     }
 
-     /** @return CustomQuestion[] */
-     public function getCustomQuestions() : array
-     {
-         return $this->deserializeArray(
+    /** @return CustomQuestion[] */
+    public function getCustomQuestions(): array
+    {
+        return $this->deserializeArray(
              $this->callApiV2Method('questions/get'),
              CustomQuestion::class
          );
-     }
+    }
 
     /** @return string[] */
-    public function getCities() : array
+    public function getCities(): array
     {
         return $this->callApiV2Method('cities/get');
     }
-    
+
     /** @return CompanyInfo[] */
     public function getInfo(): array
     {
@@ -134,11 +132,10 @@ class ApiClient
         string $urlSuffix,
         array $params = [],
         string $method = self::HTTP_GET
-    )
-    {
+    ) {
         $params = http_build_query($params + $this->getAuthParams($params));
-        $ch = curl_init();
-        $url = $this->url . self::API_ROUTE_PREFIX . $urlSuffix;
+        $ch     = curl_init();
+        $url    = $this->url . self::API_ROUTE_PREFIX . $urlSuffix;
 
         switch ($method) {
             case self::HTTP_GET:
@@ -156,18 +153,18 @@ class ApiClient
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $response = curl_exec($ch);
-        $error = curl_error($ch);
-        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $error    = curl_error($ch);
+        $code     = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
-        if ($error || $code != 200) {
+        if ($error || 200 != $code) {
             throw new ApiException($error, $code, $params);
         }
 
         return json_decode($response, true);
     }
 
-    private function deserializeArray(array $rawEntities, string $className) : array
+    private function deserializeArray(array $rawEntities, string $className): array
     {
         $jms = $this->jms;
 
@@ -179,7 +176,7 @@ class ApiClient
         );
     }
 
-    private function getAuthParams(array $params) : array
+    private function getAuthParams(array $params): array
     {
         ksort($params);
         $paramsString = '';
@@ -190,7 +187,7 @@ class ApiClient
         }
 
         return [
-            'client_id' => $this->clientId,
+            'client_id'    => $this->clientId,
             'access_token' => md5($this->clientId . $this->clientSecret . $paramsString),
         ];
     }
