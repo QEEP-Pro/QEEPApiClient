@@ -1,4 +1,6 @@
 language: php
+php:
+  - 7.1
 
 before_script:
   - composer install
@@ -10,7 +12,6 @@ stages:
 
 jobs:
   include:
+    - script: composer test
     - stage: lint
       script: composer lint
-    - stage: test
-      script: composer test
