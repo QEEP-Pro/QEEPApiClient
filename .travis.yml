@@ -5,16 +5,15 @@ php:
   - 7.2
 
 before_script:
-  - composer self-update
   - composer install
 
 stages:
   - lint
-  - test
+  - unit test
 
 jobs:
   include:
     - stage: lint
       script: composer lint
-    - stage: test
+    - stage: unit test
       script: php bin/phpspec run
