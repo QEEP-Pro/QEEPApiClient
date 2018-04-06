@@ -13,7 +13,6 @@
         "bin-dir": "bin"
     },
     "scripts": {
-        "test": "php bin/phpspec run",
         "lint": "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix ./src -v --dry-run --stop-on-violation --using-cache=no",
         "fix-style": "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix ./src"
     },
