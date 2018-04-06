@@ -17,4 +17,4 @@ jobs:
     - stage: lint
       script: composer lint
     - stage: test
-      script: "php bin/phpunit --coverage-text"
+      script: php bin/phpspec run
