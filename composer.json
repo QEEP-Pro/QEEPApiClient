@@ -13,8 +13,9 @@
         "bin-dir": "bin"
     },
     "scripts": {
-        "lint": "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix ./src -v --dry-run --stop-on-violation --using-cache=no",
-        "fix-style": "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix ./src"
+        "lint": "php bin/php-cs-fixer fix ./src -v --dry-run --stop-on-violation --using-cache=no",
+        "fix-style": "php bin/php-cs-fixer fix ./src",
+        "test": "php bin/phpspec run"
     },
     "require": {
         "php": ">=7.1",

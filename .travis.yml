@@ -6,6 +6,7 @@ php:
 
 before_script:
   - composer install
+  - composer require indigophp/doctrine-annotation-autoload
 
 stages:
   - lint
@@ -15,5 +16,5 @@ jobs:
   include:
     - stage: lint
       script: composer lint
-    - stage: unit test
-      script: php bin/phpspec run
+    - stage: test
+      script: composer test
