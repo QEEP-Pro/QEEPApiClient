@@ -275,7 +275,11 @@ class ApiClient
         curl_close($ch);
 
         if ($error || 200 != $code) {
-            throw new ApiException('Curl returned error' . $error . ' code: ' . $code . ' params ' . $params);
+            throw new ApiException(
+                'Curl returned error' . $error . ' code: ' . $code . ' params ' . $params,
+                $code,
+                $error
+            );
         }
 
 //        $rawDecodeClasses = [
