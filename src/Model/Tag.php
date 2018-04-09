@@ -2,7 +2,6 @@
 
 namespace QEEP\QEEPApiClient\Model;
 
-
 class Tag
 {
     protected $id;
@@ -15,7 +14,7 @@ class Tag
 
     protected $visible = true;
 
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -29,14 +28,14 @@ class Tag
 //        return $this;
 //    }
 
-    public function setCode(int $code) : Tag
+    public function setCode(int $code): Tag
     {
         $this->id = $code;
 
         return $this;
     }
 
-    public function getTitle() : ?string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -50,43 +49,43 @@ class Tag
 //        return $this;
 //    }
 
-    public function setValue(string $value) : Tag
+    public function setValue(string $value): Tag
     {
         $this->title = $value;
 
         return $this;
     }
 
-    public function getParentId() : ?int
+    public function getParentId(): ?int
     {
         return $this->parentId;
     }
 
-    public function setParentId(int $parentId) : Tag
+    public function setParentId(int $parentId): Tag
     {
         $this->parentId = $parentId;
 
         return $this;
     }
 
-    public function isVisible() : bool
+    public function isVisible(): bool
     {
         return $this->visible;
     }
 
-    public function setVisible(bool $visible) : Tag
+    public function setVisible(bool $visible): Tag
     {
         $this->visible = $visible;
 
         return $this;
     }
 
-    public function getPosition() : ?int
+    public function getPosition(): ?int
     {
         return $this->position;
     }
 
-    public function setPosition(int $position) : Tag
+    public function setPosition(int $position): Tag
     {
         $this->position = $position;
 

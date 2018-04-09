@@ -2,7 +2,6 @@
 
 namespace QEEP\QEEPApiClient\Model;
 
-
 class Question
 {
     protected $id;
@@ -18,12 +17,12 @@ class Question
         $this->answers = [];
     }
 
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(int $id) : Question
+    public function setId(int $id): Question
     {
         $this->id = $id;
 
@@ -32,36 +31,36 @@ class Question
 
     // QEEP-Pro отдает `code` вместо `id`
 
-    public function setCode(int $code) : Question
+    public function setCode(int $code): Question
     {
         $this->id = $code;
 
         return $this;
     }
 
-    public function getCode() : ?int
+    public function getCode(): ?int
     {
         return $this->id;
     }
 
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name) : Question
+    public function setName(string $name): Question
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getBody() : ?string
+    public function getBody(): ?string
     {
         return $this->body;
     }
 
-    public function setBody(string $body) : Question
+    public function setBody(string $body): Question
     {
         $this->body = $body;
 

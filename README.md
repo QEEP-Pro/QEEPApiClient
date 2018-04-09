@@ -1,3 +1,8 @@
+[![Packagist](https://img.shields.io/packagist/v/qeep-pro/qeep-api-client.svg?style=flat-square)](https://packagist.org/packages/qeep-pro/qeep-api-client)
+[![Build Status](https://img.shields.io/travis/QEEP-Pro/QEEPApiClient/master.svg?style=flat-square)](https://travis-ci.org/QEEP-Pro/QEEPApiClient)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/QEEP-Pro/QEEPApiClient/master/LICENSE)
+
+
 QEEP Api Client
 =========================
 

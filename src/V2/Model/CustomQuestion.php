@@ -18,36 +18,36 @@ class CustomQuestion
     /** @JMS\Type("array<string>") */
     protected $answers;
 
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(int $id) : CustomQuestion
+    public function setId(int $id): CustomQuestion
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name) : CustomQuestion
+    public function setName(string $name): CustomQuestion
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getBody() : ?string
+    public function getBody(): ?string
     {
         return $this->body;
     }
 
-    public function setBody(string $body) : CustomQuestion
+    public function setBody(string $body): CustomQuestion
     {
         $this->body = $body;
 

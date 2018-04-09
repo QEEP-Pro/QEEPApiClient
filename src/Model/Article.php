@@ -2,7 +2,6 @@
 
 namespace QEEP\QEEPApiClient\Model;
 
-
 class Article
 {
     protected $id;
@@ -32,34 +31,34 @@ class Article
     public function __construct()
     {
         $this->created = new \DateTime();
-        $this->images = [];
+        $this->images  = [];
     }
 
-    public function setId(int $id) : Article
+    public function setId(int $id): Article
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTitle() : ?string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function setTitle(string $title) : Article
+    public function setTitle(string $title): Article
     {
         $this->title = $title;
 
         return $this;
     }
 
-    public function getTypeId() : ?int
+    public function getTypeId(): ?int
     {
         return $this->typeId;
     }
@@ -73,115 +72,115 @@ class Article
 //        return $this;
 //    }
 
-    public function setType(array $type) : Article
+    public function setType(array $type): Article
     {
         $this->typeId = $type['id'];
 
         return $this;
     }
 
-    public function getDescription() : ?string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description) : Article
+    public function setDescription(string $description): Article
     {
         $this->description = $description;
 
         return $this;
     }
 
-    public function getBody() : ?string
+    public function getBody(): ?string
     {
         return $this->body;
     }
 
-    public function setBody(string $body) : Article
+    public function setBody(string $body): Article
     {
         $this->body = $body;
 
         return $this;
     }
 
-    public function isRedirectToLink() : bool
+    public function isRedirectToLink(): bool
     {
         return $this->redirectToLink;
     }
 
-    public function setRedirectToLink(bool $redirectToLink) : Article
+    public function setRedirectToLink(bool $redirectToLink): Article
     {
         $this->redirectToLink = $redirectToLink;
 
         return $this;
     }
 
-    public function isPublished() : bool
+    public function isPublished(): bool
     {
         return $this->published;
     }
 
-    public function setPublished(bool $published) : Article
+    public function setPublished(bool $published): Article
     {
         $this->published = $published;
 
         return $this;
     }
 
-    public function isShowRelatedProducts() : bool
+    public function isShowRelatedProducts(): bool
     {
         return $this->showRelatedProducts;
     }
 
-    public function setShowRelatedProducts(bool $showRelatedProducts) : Article
+    public function setShowRelatedProducts(bool $showRelatedProducts): Article
     {
         $this->showRelatedProducts = $showRelatedProducts;
 
         return $this;
     }
 
-    public function isShowInMenu() : bool
+    public function isShowInMenu(): bool
     {
         return $this->showInMenu;
     }
 
-    public function setShowInMenu(bool $showInMenu) : Article
+    public function setShowInMenu(bool $showInMenu): Article
     {
         $this->showInMenu = $showInMenu;
 
         return $this;
     }
 
-    public function getCreated() : \DateTime
+    public function getCreated(): \DateTime
     {
         return $this->created;
     }
 
-    public function setCreated(string $created) : Article
+    public function setCreated(string $created): Article
     {
         $this->created = new \DateTime($created);
 
         return $this;
     }
 
-    public function getImages() : array
+    public function getImages(): array
     {
         return $this->images;
     }
 
-    public function setImages(array $images) : Article
+    public function setImages(array $images): Article
     {
         $this->images = $images;
 
         return $this;
     }
 
-    public function getLink() : ?string
+    public function getLink(): ?string
     {
         return $this->link;
     }
 
-    public function setLink(string $link) : Article
+    public function setLink(string $link): Article
     {
         $this->link = $link;
 
@@ -189,7 +188,7 @@ class Article
     }
 
     // return first image
-    public function getImage() : ?string
+    public function getImage(): ?string
     {
         return $this->images ? $this->images[0] : null;
     }

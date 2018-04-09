@@ -18,48 +18,48 @@ class Option
     /** @JMS\Type("boolean") */
     protected $filterable = false;
 
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(int $id) : Option
+    public function setId(int $id): Option
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function getFeature() : ?string
+    public function getFeature(): ?string
     {
         return $this->feature;
     }
 
-    public function setFeature(?string $feature) : Option
+    public function setFeature(?string $feature): Option
     {
         $this->feature = $feature;
 
         return $this;
     }
 
-    public function getValue() : ?string
+    public function getValue(): ?string
     {
         return $this->value;
     }
 
-    public function setValue(?string $value) : Option
+    public function setValue(?string $value): Option
     {
         $this->value = $value;
 
         return $this;
     }
 
-    public function getFilterable() : bool
+    public function getFilterable(): bool
     {
         return $this->filterable;
     }
 
-    public function setFilterable(bool $filterable) : Option
+    public function setFilterable(bool $filterable): Option
     {
         $this->filterable = $filterable;
 

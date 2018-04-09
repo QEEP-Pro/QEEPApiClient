@@ -2,7 +2,6 @@
 
 namespace QEEP\QEEPApiClient\Model;
 
-
 class Order
 {
     protected $id;
@@ -35,72 +34,72 @@ class Order
 //        return $this->id;
 //    }
 
-    public function getOrderId() : ?int
+    public function getOrderId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(int $id) : Order
+    public function setId(int $id): Order
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function getBuyerName() : ?string
+    public function getBuyerName(): ?string
     {
         return $this->buyerName;
     }
 
-    public function setBuyerName(?string $buyerName) : Order
+    public function setBuyerName(?string $buyerName): Order
     {
         $this->buyerName = $buyerName;
 
         return $this;
     }
 
-    public function getBuyerPhone() : ?string
+    public function getBuyerPhone(): ?string
     {
         return $this->buyerPhone;
     }
 
-    public function setBuyerPhone(?string $buyerPhone) : Order
+    public function setBuyerPhone(?string $buyerPhone): Order
     {
         $this->buyerPhone = $buyerPhone;
 
         return $this;
     }
 
-    public function getBuyerEmail() : ?string
+    public function getBuyerEmail(): ?string
     {
         return $this->buyerEmail;
     }
 
-    public function setBuyerEmail(?string $buyerEmail) : Order
+    public function setBuyerEmail(?string $buyerEmail): Order
     {
         $this->buyerEmail = $buyerEmail;
 
         return $this;
     }
 
-    public function getDeliveryPrice() : ?float
+    public function getDeliveryPrice(): ?float
     {
         return $this->deliveryPrice;
     }
 
-    public function setDeliveryPrice(?float $deliveryPrice) : Order
+    public function setDeliveryPrice(?float $deliveryPrice): Order
     {
         $this->deliveryPrice = $deliveryPrice;
 
         return $this;
     }
 
-    public function getComment() : ?string
+    public function getComment(): ?string
     {
         return $this->comment;
     }
 
-    public function setComment(?string $comment) : Order
+    public function setComment(?string $comment): Order
     {
         $this->comment = $comment;
 
@@ -114,12 +113,12 @@ class Order
 //        return $this->salesChannel;
 //    }
 
-    public function getWebsite() : ?string
+    public function getWebsite(): ?string
     {
         return $this->salesChannel;
     }
 
-    public function setSalesChannel(?string $salesChannel) : Order
+    public function setSalesChannel(?string $salesChannel): Order
     {
         $this->salesChannel = $salesChannel;
 
@@ -133,24 +132,24 @@ class Order
 //        return $this->purchases;
 //    }
 
-    public function getProducts() : array
+    public function getProducts(): array
     {
         return $this->purchases;
     }
 
-    public function setPurchases(array $purchases) : Order
+    public function setPurchases(array $purchases): Order
     {
         $this->purchases = $purchases;
 
         return $this;
     }
 
-    public function getAllowSpam() : bool
+    public function getAllowSpam(): bool
     {
         return $this->allowSpam;
     }
 
-    public function setAllowSpam(bool $allowSpam) : Order
+    public function setAllowSpam(bool $allowSpam): Order
     {
         $this->allowSpam = $allowSpam;
 

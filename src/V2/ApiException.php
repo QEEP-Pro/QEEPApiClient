@@ -2,7 +2,6 @@
 
 namespace QEEP\QEEPApiClient\V2;
 
-
 use Throwable;
 
 class ApiException extends \Exception
@@ -17,15 +16,14 @@ class ApiException extends \Exception
         $curlError,
         $apiErrorCode,
         $apiParams,
-        string $message = "API error",
+        string $message = 'API error',
         Throwable $previous = null
-    )
-    {
+    ) {
         parent::__construct($message, $apiErrorCode, $previous);
 
-        $this->curlError = $curlError;
+        $this->curlError    = $curlError;
         $this->apiErrorCode = $apiErrorCode;
-        $this->apiParams = $apiParams;
+        $this->apiParams    = $apiParams;
     }
 
     public function getCurlError()
