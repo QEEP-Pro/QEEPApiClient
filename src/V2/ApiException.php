@@ -16,11 +16,10 @@ class ApiException extends \Exception
         $curlError,
         $apiErrorCode,
         $apiParams,
-        string $message = '',
-        int $code = 0,
+        string $message = 'API error',
         Throwable $previous = null
     ) {
-        parent::__construct($message, $code, $previous);
+        parent::__construct($message, $apiErrorCode, $previous);
 
         $this->curlError    = $curlError;
         $this->apiErrorCode = $apiErrorCode;
