@@ -277,8 +277,7 @@ class ApiClient
         if ($error || 200 != $code) {
             throw new ApiException(
                 'Curl returned error' . $error . ' code: ' . $code . ' params ' . $params,
-                $code,
-                $error
+                $code
             );
         }
 
