@@ -18,6 +18,8 @@ use Symfony\Component\Serializer\Serializer;
 
 class ApiClient
 {
+    private const PAYMENT_TYPE_YANDEX = 'yandex_money';
+
     const API_ROUTE_PREFIX = '/api/';
 
     const API_IMAGE_PREFIX = 'images.';
@@ -65,6 +67,24 @@ class ApiClient
 
         if ('success' === $response['status']) {
             return 'success';
+        } else {
+            throw new ApiException();
+        }
+    }
+
+    public function createOrderWithOnlinePayment(Order $order): string
+    {
+        $order->setSalesChannel($this->salesChannel);
+        $order->setPaymentMethod(self::PAYMENT_TYPE_YANDEX);
+
+        $response =  $this->callApiV1Method(
+            self::API_ROUTE_PREFIX . 'orders.json/createOrder',
+            Order::class,
+            $this->serializer->normalize($order),
+            'POST');
+
+        if ('success' === $response['status']) {
+            return $response;
         } else {
             throw new ApiException();
         }

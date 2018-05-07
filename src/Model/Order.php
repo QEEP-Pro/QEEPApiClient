@@ -22,6 +22,8 @@ class Order
 
     protected $allowSpam = true;
 
+    protected $paymentMethod;
+
     public function __construct()
     {
         $this->purchases = [];
@@ -152,6 +154,18 @@ class Order
     public function setAllowSpam(bool $allowSpam): Order
     {
         $this->allowSpam = $allowSpam;
+
+        return $this;
+    }
+
+    public function getPaymentMethod(): ?string
+    {
+        return $this->paymentMethod;
+    }
+
+    public function setPaymentMethod(?string $paymentMethod): Order
+    {
+        $this->paymentMethod = $paymentMethod;
 
         return $this;
     }
