@@ -72,7 +72,7 @@ class ApiClient
         }
     }
 
-    public function createOrderWithOnlinePayment(Order $order): string
+    public function createOrderWithOnlinePayment(Order $order): array
     {
         $order->setSalesChannel($this->salesChannel);
         $order->setPaymentMethod(self::PAYMENT_TYPE_YANDEX);
