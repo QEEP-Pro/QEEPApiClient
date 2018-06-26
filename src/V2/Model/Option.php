@@ -12,7 +12,7 @@ class Option
     /** @JMS\Type("string") */
     protected $feature;
 
-    /** @JMS\Type("string") */
+    /** @JMS\Type("integer") */
     protected $position;
 
     /** @JMS\Type("string") */
