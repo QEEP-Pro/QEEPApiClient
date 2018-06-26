@@ -13,6 +13,9 @@ class Option
     protected $feature;
 
     /** @JMS\Type("string") */
+    protected $position;
+
+    /** @JMS\Type("string") */
     protected $value;
 
     /** @JMS\Type("boolean") */
@@ -38,6 +41,18 @@ class Option
     public function setFeature(?string $feature): Option
     {
         $this->feature = $feature;
+
+        return $this;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(?int $position): Option
+    {
+        $this->position = $position;
 
         return $this;
     }
