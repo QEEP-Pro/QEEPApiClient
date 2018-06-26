@@ -12,6 +12,9 @@ class Option
     /** @JMS\Type("string") */
     protected $feature;
 
+    /** @JMS\Type("integer") */
+    protected $position;
+
     /** @JMS\Type("string") */
     protected $value;
 
@@ -38,6 +41,18 @@ class Option
     public function setFeature(?string $feature): Option
     {
         $this->feature = $feature;
+
+        return $this;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(?int $position): Option
+    {
+        $this->position = $position;
 
         return $this;
     }
