@@ -12,9 +12,6 @@ class Parameter
     /** @JMS\Type("string") */
     protected $name;
 
-    /** @JMS\Type("integer") */
-    protected $position;
-
     /** @JMS\Type("string") */
     protected $characteristic;
 
@@ -38,18 +35,6 @@ class Parameter
     public function setName(?string $name): Parameter
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getPosition(): ?int
-    {
-        return $this->position;
-    }
-
-    public function setPosition(?int $position): Parameter
-    {
-        $this->position = $position;
 
         return $this;
     }
