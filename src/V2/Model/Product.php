@@ -51,6 +51,9 @@ class Product
     /** @JMS\Type("array<QEEP\QEEPApiClient\V2\Model\Category>") */
     protected $categories;
 
+    /** @JMS\Type("array") */
+    protected $characteristicsOrder;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -229,6 +232,18 @@ class Product
     public function setCategories(array  $categories): Product
     {
         $this->categories = $categories;
+
+        return $this;
+    }
+
+    public function getCharacteristicsOrder(): ?array
+    {
+        return $this->characteristicsOrder;
+    }
+
+    public function setCharacteristicsOrder(array $characteristicsOrder): Product
+    {
+        $this->characteristicsOrder = $characteristicsOrder;
 
         return $this;
     }
