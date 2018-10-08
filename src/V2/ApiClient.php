@@ -8,6 +8,7 @@ use QEEP\QEEPApiClient\V2\Model\Category;
 use QEEP\QEEPApiClient\V2\Model\CompanyContact;
 use QEEP\QEEPApiClient\V2\Model\CompanyInfo;
 use QEEP\QEEPApiClient\V2\Model\CustomQuestion;
+use QEEP\QEEPApiClient\V2\Model\DeliveryInterval;
 use QEEP\QEEPApiClient\V2\Model\Product;
 use QEEP\QEEPApiClient\V2\Model\SocialLink;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -125,6 +126,15 @@ class ApiClient
         return $this->deserializeArray(
             $this->callApiV2Method('links/get'),
             SocialLink::class
+        );
+    }
+
+    /** @return DeliveryInterval[] */
+    public function getDeliveryIntervals(): array
+    {
+        return $this->deserializeArray(
+            $this->callApiV2Method('delivery-intervals/get'),
+            DeliveryInterval::class
         );
     }
 
