@@ -12,19 +12,34 @@ class DeliveryInterval
     /** @JMS\Type("string") */
     protected $name;
 
-    /** @JMS\Type("integer") */
+    /**
+     * @JMS\Type("integer")
+     * @JMS\SerializedName("timeFrom")
+     */
     protected $timeFrom;
 
-    /** @JMS\Type("integer") */
+    /**
+     * @JMS\Type("integer")
+     * @JMS\SerializedName("timeTo")
+     */
     protected $timeTo;
 
-    /** @JMS\Type("integer") */
+    /**
+     * @JMS\Type("integer")
+     * @JMS\SerializedName("daysToPreOrder")
+     */
     protected $daysToPreOrder;
 
-    /** @JMS\Type("integer") */
+    /**
+     * @JMS\Type("integer")
+     * @JMS\SerializedName("hoursToPreOrder")
+     */
     protected $hoursToPreOrder;
 
-    /** @JMS\Type("array<integer>") */
+    /**
+     * @JMS\Type("array<integer>")
+     * @JMS\SerializedName("daysOfWeek")
+     */
     protected $daysOfWeek;
 
     public function getId(): ?int
