@@ -22,8 +22,7 @@
         "symfony/serializer": "^4.0 | ^3.0",
         "symfony/property-access": "^4.0 | ^3.0",
         "jms/serializer": "^1.10",
-        "doctrine/common": "^2.8",
-        "indigophp/doctrine-annotation-autoload": "^0.1.0"
+        "doctrine/common": "^2.8"
     },
     "require-dev": {
         "phpspec/phpspec": "^4.2",
