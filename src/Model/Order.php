@@ -94,7 +94,7 @@ class Order
         return $this;
     }
 
-    public function getBuyerAddress(): Order
+    public function getBuyerAddress(): ?string
     {
         return $this->buyerAddress;
         }
