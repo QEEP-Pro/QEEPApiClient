@@ -14,6 +14,16 @@ class Order
 
     protected $deliveryPrice;
 
+    protected $buyerAddress;
+
+    protected $deliveryType;
+
+    protected $deliveryTime;
+
+    protected $deliveryHoursFrom;
+
+    protected $deliveryHoursTo;
+
     protected $comment;
 
     protected $salesChannel;
@@ -84,6 +94,19 @@ class Order
         return $this;
     }
 
+    public function getBuyerAddress(): Order
+    {
+        return $this->buyerAddress;
+        }
+
+
+    public function setBuyerAddress(?string $buyerAddress): Order
+    {
+        $this->buyerAddress = $buyerAddress;
+
+        return $this;
+    }
+
     public function getDeliveryPrice(): ?float
     {
         return $this->deliveryPrice;
@@ -92,6 +115,54 @@ class Order
     public function setDeliveryPrice(?float $deliveryPrice): Order
     {
         $this->deliveryPrice = $deliveryPrice;
+
+        return $this;
+    }
+
+    public function getDeliveryType(): ?string
+    {
+        return $this->deliveryType;
+    }
+
+    public function setDeliveryType(?string $deliveryType): Order
+    {
+        $this->deliveryType = $deliveryType;
+
+        return $this;
+    }
+
+    public function getDeliveryTime(): ?int
+    {
+        return $this->deliveryTime;
+    }
+
+    public function setDeliveryTime(?int $deliveryTime): Order
+    {
+        $this->deliveryTime = $deliveryTime;
+
+        return $this;
+    }
+
+    public function getDeliveryHoursFrom(): ?int
+    {
+        return $this->deliveryHoursFrom;
+    }
+
+    public function setDeliveryHoursFrom(?int $deliveryHoursFrom): Order
+    {
+        $this->deliveryHoursFrom = $deliveryHoursFrom;
+
+        return $this;
+    }
+
+    public function getDeliveryHoursTo(): ?int
+    {
+        return $this->deliveryHoursTo;
+    }
+
+    public function setDeliveryHoursTo(?int $deliveryHoursTo): Order
+    {
+        $this->deliveryHoursTo = $deliveryHoursTo;
 
         return $this;
     }
