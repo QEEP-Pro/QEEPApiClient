@@ -9,7 +9,10 @@ use phpmock\MockBuilder;
 use QEEP\QEEPApiClient\V2\Model\CompanyContact;
 use QEEP\QEEPApiClient\V2\Model\CompanyInfo;
 use QEEP\QEEPApiClient\V2\Model\CustomQuestion;
+use QEEP\QEEPApiClient\V2\Model\GroupModifier;
+use QEEP\QEEPApiClient\V2\Model\Product;
 use QEEP\QEEPApiClient\V2\Model\SocialLink;
+use QEEP\QEEPApiClient\V2\Model\Variant;
 
 class ApiClientSpec extends ObjectBehavior
 {
@@ -116,6 +119,71 @@ class ApiClientSpec extends ObjectBehavior
             (new CompanyInfo())
                 ->setKey("delivery")
                 ->setValue("!Не следует, однако забывать, что постоянный количественный рост и сфера нашей активности способствует подготовки и реализации модели развития. Разнообразный и богатый опыт начало повседневной работы по формированию позиции играет важную роль в формировании модели развития.")
+        ]);
+
+        $mockCurl->disable();
+    }
+
+    function it_is_able_to_get_group_modifiers_for_variants()
+    {
+        $mockCurl = $this->buildMockCurl(
+            '[{
+                        "variants":
+                            [{
+                            "sku":"333",
+                            "groupModifiers":
+                                [{
+                                "id":303,
+                                "maxAmount":10,
+                                "minAmount":0,
+                                "defaultAmount":null,
+                                "title":"Добавки", 
+                                 "modifiers":
+                                        [{
+                                        "title": "Сыр чеддер  16 гр",
+                                         "price": 35,
+                                        "quantity": null,
+                                        "description": "",
+                                        "body": null,
+                                        "sku": "01190",
+                                        "name": null,
+                                        "parameters": [],
+                                        "groupModifiers": [],
+                                        "modifiers": [],
+                                        "id": 77,
+                                        "_route": "variant/56729",
+                                        "_entity": "variant",
+                                        "_full": false,
+                                        "_deletable": true,
+                                        "_timestamp": 1630132718
+                                        }]
+                            }],
+            "id":1}]
+}]'
+        );
+
+        $this->beConstructedWith(...$this->getApiClientParams());
+        $this->getProducts()->shouldBeLike([
+            (new Product())
+                ->setVariants(
+                    [(new Variant())
+                        ->setId(1)
+                        ->setSku(333)
+                        ->setGroupModifiers(
+                            [(new GroupModifier())
+                                ->setId(303)
+                                ->setMaxAmount(10)
+                                ->setMinAmount(0)
+                                ->setDefaultAmount(null)
+                                ->setTitle('Добавки')
+                                ->setModifiers([(new Variant())
+                                    ->setSku('01190')
+                                    ->setId(77)
+                                    ->setTitle('Сыр чеддер  16 гр')
+                                ])
+                            ])
+                    ]
+                )
         ]);
 
         $mockCurl->disable();
