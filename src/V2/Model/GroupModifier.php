@@ -16,7 +16,7 @@ class GroupModifier extends AbstractModifier
         $this->modifiers = [];
     }
 
-    public function getModifiers(): ?array
+    public function getModifiers(): array
     {
         return $this->modifiers;
     }
@@ -30,8 +30,8 @@ class GroupModifier extends AbstractModifier
 
     public function addModifier(Variant $modifier): self
     {
-        if (!$this->modifiers->contains($modifier)) {
-            $this->modifiers->add($modifier);
+        if (!in_array($modifier, $this->modifiers)) {
+            array_push($this->modifiers, $modifier);
         }
 
         return $this;
@@ -40,10 +40,5 @@ class GroupModifier extends AbstractModifier
     public function isRequired(): bool
     {
         return $this->getMinAmount() > 0;
-    }
-
-    public function getIikoId()
-    {
-        return $this->getCategory()->getExternalId();
     }
 }

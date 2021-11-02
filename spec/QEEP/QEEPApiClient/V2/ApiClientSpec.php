@@ -3,9 +3,9 @@
 namespace spec\QEEP\QEEPApiClient\V2;
 
 use phpmock\environment\MockEnvironment;
+use phpmock\MockBuilder;
 use phpmock\MockEnabledException;
 use PhpSpec\ObjectBehavior;
-use phpmock\MockBuilder;
 use QEEP\QEEPApiClient\V2\Model\CompanyContact;
 use QEEP\QEEPApiClient\V2\Model\CompanyInfo;
 use QEEP\QEEPApiClient\V2\Model\CustomQuestion;
@@ -127,39 +127,44 @@ class ApiClientSpec extends ObjectBehavior
     function it_is_able_to_get_group_modifiers_for_variants()
     {
         $mockCurl = $this->buildMockCurl(
-            '[{
-                        "variants":
-                            [{
-                            "sku":"333",
-                            "groupModifiers":
-                                [{
-                                "id":303,
-                                "maxAmount":10,
-                                "minAmount":0,
-                                "defaultAmount":null,
-                                "title":"Добавки", 
-                                 "modifiers":
-                                        [{
-                                        "title": "Сыр чеддер  16 гр",
-                                         "price": 35,
-                                        "quantity": null,
-                                        "description": "",
-                                        "body": null,
-                                        "sku": "01190",
-                                        "name": null,
-                                        "parameters": [],
-                                        "groupModifiers": [],
-                                        "modifiers": [],
-                                        "id": 77,
-                                        "_route": "variant/56729",
-                                        "_entity": "variant",
-                                        "_full": false,
-                                        "_deletable": true,
-                                        "_timestamp": 1630132718
-                                        }]
-                            }],
-            "id":1}]
-}]'
+            '[
+               {
+                  "variants":[
+                     {
+                        "id":1,
+                        "sku":"333",
+                        "groupModifiers":[
+                           {
+                              "id":303,
+                              "maxAmount":10,
+                              "minAmount":0,
+                              "defaultAmount":null,
+                              "title":"Добавки",
+                              "modifiers":[
+                                 {
+                                    "name":"Сыр чеддер  16 гр",
+                                    "price":35,
+                                    "quantity":null,
+                                    "description":"",
+                                    "body":null,
+                                    "sku":"01190",
+                                    "modifiers":[
+                                       
+                                    ],
+                                    "id":77,
+                                    "_route":"variant/56729",
+                                    "_entity":"variant",
+                                    "_full":false,
+                                    "_deletable":true,
+                                    "_timestamp":1630132718
+                                 }
+                              ]
+                           }
+                        ]
+                     }
+                  ]
+               }
+            ]'
         );
 
         $this->beConstructedWith(...$this->getApiClientParams());
@@ -179,7 +184,8 @@ class ApiClientSpec extends ObjectBehavior
                                 ->setModifiers([(new Variant())
                                     ->setSku('01190')
                                     ->setId(77)
-                                    ->setTitle('Сыр чеддер  16 гр')
+                                    ->setName('Сыр чеддер  16 гр')
+                                    ->setPrice(35)
                                 ])
                             ])
                     ]

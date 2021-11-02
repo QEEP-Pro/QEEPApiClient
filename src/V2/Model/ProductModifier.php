@@ -2,6 +2,8 @@
 
 namespace QEEP\QEEPApiClient\V2\Model;
 
+use JMS\Serializer\Annotation as JMS;
+
 class ProductModifier extends AbstractModifier
 {
     /**
@@ -23,7 +25,7 @@ class ProductModifier extends AbstractModifier
 
     public function getTitle(): string
     {
-        return $this->modifier->getName();
+        return $this->modifier->getTitle();
     }
 
     public function getPrice()

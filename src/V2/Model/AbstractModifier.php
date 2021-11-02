@@ -1,10 +1,8 @@
 <?php
 
-
 namespace QEEP\QEEPApiClient\V2\Model;
 
 use JMS\Serializer\Annotation as JMS;
-
 
 abstract class AbstractModifier
 {
