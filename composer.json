@@ -19,6 +19,9 @@
     },
     "require": {
         "php": ">=7.1",
+        "ext-curl": "*",
+        "ext-json": "*",
+
         "symfony/serializer": "^4.0 | ^3.0",
         "symfony/property-access": "^4.0 | ^3.0",
         "jms/serializer": "^1.10",
