@@ -24,6 +24,13 @@ class Variant
     /** @JMS\Type("array<QEEP\QEEPApiClient\V2\Model\Parameter>") */
     protected $parameters;
 
+    /**
+     * @JMS\SerializedName("groupModifiers")
+     * @JMS\Type("array<QEEP\QEEPApiClient\V2\Model\GroupModifier>")
+     * @var GroupModifier[]
+     */
+    protected $groupModifiers;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -92,6 +99,24 @@ class Variant
     public function setParameters(array $parameters): Variant
     {
         $this->parameters = $parameters;
+
+        return $this;
+    }
+    /**
+     * @return GroupModifier[]
+     */
+    public function getGroupModifiers(): array
+    {
+        return $this->groupModifiers;
+    }
+
+    /**
+     * @param GroupModifier[] $groupModifiers
+     * @return Variant
+     */
+    public function setGroupModifiers(array $groupModifiers): Variant
+    {
+        $this->groupModifiers = $groupModifiers;
 
         return $this;
     }

@@ -2,6 +2,8 @@
 
 namespace QEEP\QEEPApiClient\V2;
 
+use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
+use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\SerializerBuilder;
 use QEEP\QEEPApiClient\V2\Model\Brand;
 use QEEP\QEEPApiClient\V2\Model\Category;
@@ -11,10 +13,7 @@ use QEEP\QEEPApiClient\V2\Model\CustomQuestion;
 use QEEP\QEEPApiClient\V2\Model\DeliveryInterval;
 use QEEP\QEEPApiClient\V2\Model\Product;
 use QEEP\QEEPApiClient\V2\Model\SocialLink;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
+
 
 class ApiClient
 {
@@ -52,12 +51,13 @@ class ApiClient
         $this->salesChannel = $salesChannel;
         $this->imageUrl     = $imageUrl;
 
-        $this->serializer = new Serializer(
-            [new ObjectNormalizer(), new ArrayDenormalizer()],
-            [new JsonEncoder()]
-        );
-
-        $this->jms = SerializerBuilder::create()->build();
+        $this->jms = SerializerBuilder::create()
+            ->setPropertyNamingStrategy(
+                new SerializedNameAnnotationStrategy(
+                    new IdenticalPropertyNamingStrategy()
+                )
+            )
+            ->build();
     }
 
     /** @return Category[] */
