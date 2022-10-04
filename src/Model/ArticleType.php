@@ -8,6 +8,8 @@ class ArticleType
 
     protected $title;
 
+    protected $description;
+
     protected $showInMenu = false;
 
     public function setId(int $id): ArticleType
@@ -32,6 +34,18 @@ class ArticleType
     public function getTitle(): ?string
     {
         return $this->title;
+    }
+
+    public function setDescription(string $description): ArticleType
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
     }
 
     public function isShowInMenu(): bool
