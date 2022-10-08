@@ -16,6 +16,10 @@ class Order
 
     protected $buyerAddress;
 
+    protected $promoCode;
+
+    protected $discountPrice;
+
     protected $deliveryType;
 
     protected $deliveryTime;
@@ -103,6 +107,30 @@ class Order
     public function setBuyerAddress(?string $buyerAddress): Order
     {
         $this->buyerAddress = $buyerAddress;
+
+        return $this;
+    }
+
+    public function getPromoCode(): ?string
+    {
+        return $this->promoCode;
+    }
+
+    public function setPromoCode(?string $promoCode): Order
+    {
+        $this->promoCode = $promoCode;
+
+        return $this;
+    }
+
+    public function getDiscountPrice(): ?int
+    {
+        return $this->discountPrice;
+    }
+
+    public function setDiscountPrice(?int $discountPrice): Order
+    {
+        $this->discountPrice = $discountPrice;
 
         return $this;
     }

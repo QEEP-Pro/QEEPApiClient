@@ -4,6 +4,7 @@ namespace QEEP\QEEPApiClient;
 
 use QEEP\QEEPApiClient\Model\Order;
 use QEEP\QEEPApiClient\Model\OrderStatus;
+use QEEP\QEEPApiClient\Model\PromoCode;
 use QEEP\QEEPApiClient\Model\Question;
 use QEEP\QEEPApiClient\Model\Tag;
 use QEEP\QEEPApiClient\Model\Product;
@@ -70,6 +71,18 @@ class ApiClient
         } else {
             throw new ApiException();
         }
+    }
+
+
+    public function getPromoCode(string $promoCodeName): ?array
+    {
+        $response = $this->callApiV1Method(
+            self::API_ROUTE_PREFIX . 'promo-code/get',
+            PromoCode::class,
+            ['promoCode' => $promoCodeName]
+        );
+
+        return $response;
     }
 
     public function createOrderWithOnlinePayment(Order $order): array
