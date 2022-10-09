@@ -6,28 +6,28 @@ use JMS\Serializer\Annotation as JMS;
 
 class BonusSystem
 {
-    /**  @JMS\Type("integer")  */
+    /** @JMS\Type("integer") */
     private $id;
 
-    /**  @JMS\Type("integer")  */
+    /** @JMS\Type("integer") */
     private $bonusRewardPercent = 0;
 
-    /**  @JMS\Type("integer")  */
+    /** @JMS\Type("integer") */
     private $welcomeBonus = 0;
 
-    /**  @JMS\Type("integer")  */
+    /** @JMS\Type("integer") */
     private $bonusesLimitPerPayment;
 
-    /**  @JMS\Type("boolean")  */
+    /** @JMS\Type("boolean") */
     private $active = false;
 
-    /**  @JMS\Type("boolean")  */
+    /** @JMS\Type("boolean") */
     private $rewardOrdersPaidWithBonuses = false;
 
-    /**  @JMS\Type("string")  */
+    /** @JMS\Type("string") */
     private $shortDescription;
 
-    /**  @JMS\Type("string")  */
+    /** @JMS\Type("string") */
     private $fullDescription;
 
     public function getId(): ?int
@@ -47,7 +47,6 @@ class BonusSystem
         return $this;
     }
 
-
     public function getBonusRewardPercent(): ?int
     {
         return $this->bonusRewardPercent;
@@ -60,12 +59,12 @@ class BonusSystem
         return $this;
     }
 
-    public function isActive(): ?bool
+    public function isActive(): bool
     {
         return $this->active;
     }
 
-    public function setActive(?bool $active): self
+    public function setActive(bool $active): self
     {
         $this->active = $active;
 
@@ -84,7 +83,7 @@ class BonusSystem
         return $this;
     }
 
-    public function getRewardOrdersPaidWithBonuses(): ?bool
+    public function getRewardOrdersPaidWithBonuses(): bool
     {
         return $this->rewardOrdersPaidWithBonuses;
     }
