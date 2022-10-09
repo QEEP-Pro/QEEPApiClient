@@ -42,6 +42,10 @@ class Order
 
     protected $paymentMethod;
 
+    protected $paidByBonuses;
+
+    protected $buyerId;
+
     public function __construct()
     {
         $this->purchases = [];
@@ -62,6 +66,18 @@ class Order
     public function setId(int $id): Order
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    public function getBuyerId(): ?int
+    {
+        return $this->buyerId;
+    }
+
+    public function setBuyerId(?int $buyerId): Order
+    {
+        $this->buyerId = $buyerId;
 
         return $this;
     }
@@ -98,6 +114,18 @@ class Order
     public function setBuyerEmail(?string $buyerEmail): Order
     {
         $this->buyerEmail = $buyerEmail;
+
+        return $this;
+    }
+
+    public function getPaidByBonuses(): ?int
+    {
+        return $this->paidByBonuses;
+    }
+
+    public function setPaidByBonuses(?int $paidByBonuses): Order
+    {
+        $this->paidByBonuses = $paidByBonuses;
 
         return $this;
     }
