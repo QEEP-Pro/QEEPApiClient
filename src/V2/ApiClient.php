@@ -107,7 +107,7 @@ class ApiClient
     public function getBonusSystems(): array
     {
         return $this->deserializeArray(
-            $this->callApiV2Method('bonusSystems/get'),
+            $this->callApiV2Method('bonus-system/get'),
             BonusSystem::class
         );
     }
