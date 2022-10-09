@@ -127,12 +127,7 @@ class ApiClientSpec extends ObjectBehavior
 
     function it_is_able_to_get_delivery_minute() {
         $mockCurl = $this->buildMockCurl(
-            '[
-               {
-                  "minuteFrom": 1,
-                  "minuteTo": 2,
-                  }
-            ]'
+            '[{"minuteFrom": 1, "minuteTo": 2}]'
         );
 
         $this->beConstructedWith(...$this->getApiClientParams());
