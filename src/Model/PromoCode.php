@@ -75,7 +75,7 @@ class PromoCode
         return $this;
     }
 
-    public function isFirstOrderOnly(): bool
+    public function isFirstOrderOnly(): ?bool
     {
         return $this->firstOrderOnly;
     }
