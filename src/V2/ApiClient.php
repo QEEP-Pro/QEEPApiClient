@@ -5,6 +5,7 @@ namespace QEEP\QEEPApiClient\V2;
 use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
 use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\SerializerBuilder;
+use QEEP\QEEPApiClient\V2\Model\BonusSystem;
 use QEEP\QEEPApiClient\V2\Model\Brand;
 use QEEP\QEEPApiClient\V2\Model\Category;
 use QEEP\QEEPApiClient\V2\Model\CompanyContact;
@@ -100,6 +101,15 @@ class ApiClient
     public function getCities(): array
     {
         return $this->callApiV2Method('cities/get');
+    }
+
+    /** @return BonusSystem[] */
+    public function getBonusSystems(): array
+    {
+        return $this->deserializeArray(
+            $this->callApiV2Method('bonusSystems/get'),
+            BonusSystem::class
+        );
     }
 
     /** @return CompanyInfo[] */
