@@ -73,6 +73,26 @@ class ApiClient
         }
     }
 
+    public function sendPhone(string $phone): string
+    {
+        $response = $this->callApiV1Method(
+            self::API_ROUTE_PREFIX . 'integrations/send/' . $phone,
+            Order::class
+        );
+
+        return $response;
+    }
+
+    public function checkCode(string $phone, int $code): array
+    {
+        $response = $this->callApiV1Method(
+            self::API_ROUTE_PREFIX . 'integrations/check/' . $phone . '/' . $code,
+            Order::class
+        );
+
+        return $response;
+    }
+
     public function getDeliveryRegionsMapURL(): string
     {
         $params = http_build_query($this->getAuthParams([]));
