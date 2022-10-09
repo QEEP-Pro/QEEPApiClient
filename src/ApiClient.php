@@ -73,7 +73,6 @@ class ApiClient
         }
     }
 
-
     public function getPromoCode(string $promoCodeName): ?array
     {
         $response = $this->callApiV1Method(
