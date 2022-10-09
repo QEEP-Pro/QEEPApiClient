@@ -24,6 +24,10 @@ class Order
 
     protected $deliveryHoursTo;
 
+    protected $deliveryMinuteFrom;
+
+    protected $deliveryMinuteTo;
+
     protected $comment;
 
     protected $salesChannel;
@@ -163,6 +167,30 @@ class Order
     public function setDeliveryHoursTo(?int $deliveryHoursTo): Order
     {
         $this->deliveryHoursTo = $deliveryHoursTo;
+
+        return $this;
+    }
+
+    public function getDeliveryMinuteFrom(): ?int
+    {
+        return $this->deliveryMinuteFrom;
+    }
+
+    public function setDeliveryMinuteFrom(?int $deliveryMinuteFrom): Order
+    {
+        $this->deliveryMinuteFrom = $deliveryMinuteFrom;
+
+        return $this;
+    }
+
+    public function getDeliveryMinuteTo(): ?int
+    {
+        return $this->deliveryMinuteTo;
+    }
+
+    public function setDeliveryMinuteTo(?int $deliveryMinuteTo): Order
+    {
+        $this->deliveryMinuteTo = $deliveryMinuteTo;
 
         return $this;
     }

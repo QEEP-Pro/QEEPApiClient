@@ -14,15 +14,27 @@ class DeliveryInterval
 
     /**
      * @JMS\Type("integer")
-     * @JMS\SerializedName("timeFrom")
+     * @JMS\SerializedName("hourFrom")
      */
-    protected $timeFrom;
+    protected $hourFrom;
 
     /**
      * @JMS\Type("integer")
-     * @JMS\SerializedName("timeTo")
+     * @JMS\SerializedName("hourTo")
      */
-    protected $timeTo;
+    protected $hourTo;
+
+    /**
+     * @JMS\Type("integer")
+     * @JMS\SerializedName("minuteFrom")
+     */
+    protected $minuteFrom;
+
+    /**
+     * @JMS\Type("integer")
+     * @JMS\SerializedName("minuteTo")
+     */
+    protected $minuteTo;
 
     /**
      * @JMS\Type("integer")
@@ -66,26 +78,50 @@ class DeliveryInterval
         return $this;
     }
 
-    public function getTimeFrom(): ?int
+    public function getHourFrom(): ?int
     {
-        return $this->timeFrom;
+        return $this->hourFrom;
     }
 
-    public function setTimeFrom(int $timeFrom): DeliveryInterval
+    public function setHourFrom(int $hourFrom): DeliveryInterval
     {
-        $this->timeFrom = $timeFrom;
+        $this->hourFrom = $hourFrom;
 
         return $this;
     }
 
-    public function getTimeTo(): ?int
+    public function getHourTo(): ?int
     {
-        return $this->timeTo;
+        return $this->hourTo;
     }
 
-    public function setTimeTo(int $timeTo): DeliveryInterval
+    public function setHourTo(int $hourTo): DeliveryInterval
     {
-        $this->timeTo = $timeTo;
+        $this->hourTo = $hourTo;
+
+        return $this;
+    }
+
+    public function getMinuteFrom(): ?int
+    {
+        return $this->minuteFrom;
+    }
+
+    public function setMinuteFrom(int $minuteFrom): DeliveryInterval
+    {
+        $this->minuteFrom = $minuteFrom;
+
+        return $this;
+    }
+
+    public function getMinuteTo(): ?int
+    {
+        return $this->minuteTo;
+    }
+
+    public function setMinuteTo(int $minuteTo): DeliveryInterval
+    {
+        $this->minuteTo = $minuteTo;
 
         return $this;
     }

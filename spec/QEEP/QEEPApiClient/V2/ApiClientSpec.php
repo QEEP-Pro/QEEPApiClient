@@ -9,6 +9,7 @@ use PhpSpec\ObjectBehavior;
 use QEEP\QEEPApiClient\V2\Model\CompanyContact;
 use QEEP\QEEPApiClient\V2\Model\CompanyInfo;
 use QEEP\QEEPApiClient\V2\Model\CustomQuestion;
+use QEEP\QEEPApiClient\V2\Model\DeliveryInterval;
 use QEEP\QEEPApiClient\V2\Model\GroupModifier;
 use QEEP\QEEPApiClient\V2\Model\Product;
 use QEEP\QEEPApiClient\V2\Model\SocialLink;
@@ -119,6 +120,21 @@ class ApiClientSpec extends ObjectBehavior
             (new CompanyInfo())
                 ->setKey("delivery")
                 ->setValue("!Не следует, однако забывать, что постоянный количественный рост и сфера нашей активности способствует подготовки и реализации модели развития. Разнообразный и богатый опыт начало повседневной работы по формированию позиции играет важную роль в формировании модели развития.")
+        ]);
+
+        $mockCurl->disable();
+    }
+
+    function it_is_able_to_get_delivery_minute() {
+        $mockCurl = $this->buildMockCurl(
+            '[{"minuteFrom": 1, "minuteTo": 2}]'
+        );
+
+        $this->beConstructedWith(...$this->getApiClientParams());
+        $this->getDeliveryIntervals()->shouldBeLike([
+            (new DeliveryInterval())
+                ->setMinuteFrom(1)
+                ->setMinuteTo(2)
         ]);
 
         $mockCurl->disable();
