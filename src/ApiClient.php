@@ -73,15 +73,13 @@ class ApiClient
         }
     }
 
-    public function getPromoCode(string $promoCodeName): ?array
+    public function getPromoCode(string $promoCodeName)
     {
-        $response = $this->callApiV1Method(
+        return $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'promo-code/get',
             PromoCode::class,
             ['promoCode' => $promoCodeName]
         );
-
-        return $response;
     }
 
     public function createOrderWithOnlinePayment(Order $order): array
