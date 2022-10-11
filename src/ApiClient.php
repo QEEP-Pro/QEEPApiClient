@@ -73,7 +73,7 @@ class ApiClient
         }
     }
 
-    public function sendPhone(string $phone): ?string
+    public function requestAuthCode(string $phone): ?string
     {
         $response = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'integrations/send/' . $phone,
