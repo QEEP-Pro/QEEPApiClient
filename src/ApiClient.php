@@ -73,7 +73,7 @@ class ApiClient
         }
     }
 
-    public function getGoogleMapUrl(): string
+    public function getDeliveryRegionsMapUrl(): string
     {
         $params = http_build_query($this->getAuthParams([]));
 
