@@ -73,11 +73,18 @@ class ApiClient
         }
     }
 
-    public function getMapURL(string $apiUrl): string
+    public function getDeliveryRegionsMapURL(): string
     {
         $params = http_build_query($this->getAuthParams([]));
 
-        return  $this->url . self::API_ROUTE_PREFIX . $apiUrl. '?' . $params;
+        return  $this->url . self::API_ROUTE_PREFIX . 'delivery-regions/delivery-regions-map?' . $params;
+    }
+
+    public function getPickupPointsMapURL(): string
+    {
+        $params = http_build_query($this->getAuthParams([]));
+
+        return  $this->url . self::API_ROUTE_PREFIX . 'delivery-regions/pickup-points-map?' . $params;
     }
 
     public function getPromoCode(string $promoCodeName)
