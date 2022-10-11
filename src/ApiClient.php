@@ -76,7 +76,7 @@ class ApiClient
     public function requestAuthCode(string $phone): ?string
     {
         $response = $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . 'integrations/send/' . $phone,
+            self::API_ROUTE_PREFIX . 'auth/request-code/' . $phone,
             Order::class
         );
 
@@ -86,7 +86,7 @@ class ApiClient
     public function checkCode(string $phone, int $code): ?array
     {
         $response = $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . 'integrations/check/' . $phone . '/' . $code,
+            self::API_ROUTE_PREFIX . 'auth/check-code/' . $phone . '/' . $code,
             Order::class
         );
 
