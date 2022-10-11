@@ -73,6 +73,13 @@ class ApiClient
         }
     }
 
+    public function getGoogleMapUrl(): string
+    {
+        $params = http_build_query($this->getAuthParams([]));
+
+        return  $this->url . self::API_ROUTE_PREFIX . 'google-map/delivery-regions?' . $params;
+    }
+
     public function getPromoCode(string $promoCodeName)
     {
         return $this->callApiV1Method(
