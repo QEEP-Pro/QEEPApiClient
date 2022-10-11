@@ -73,11 +73,11 @@ class ApiClient
         }
     }
 
-    public function getDeliveryRegionsMapURL(): string
+    public function getMapURL(string $apiUrl): string
     {
         $params = http_build_query($this->getAuthParams([]));
 
-        return  $this->url . self::API_ROUTE_PREFIX . 'delivery-regions/delivery-regions-map?' . $params;
+        return  $this->url . self::API_ROUTE_PREFIX . $apiUrl. '?' . $params;
     }
 
     public function getPromoCode(string $promoCodeName)
