@@ -73,7 +73,7 @@ class ApiClient
         }
     }
 
-    public function getDeliveryRegionsMapUrl(): string
+    public function getDeliveryRegionsMapURL(): string
     {
         $params = http_build_query($this->getAuthParams([]));
 
