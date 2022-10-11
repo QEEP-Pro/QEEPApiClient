@@ -83,7 +83,7 @@ class ApiClient
         return $response;
     }
 
-    public function checkCode(string $phone, int $code): ?array
+    public function checkAuthCode(string $phone, int $code): ?array
     {
         $response = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'auth/check-code/' . $phone . '/' . $code,
