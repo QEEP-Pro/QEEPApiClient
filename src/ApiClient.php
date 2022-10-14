@@ -73,7 +73,7 @@ class ApiClient
         }
     }
 
-    public function getDeliveryPrice(array $deliveryAddress){
+    public function getDeliveryPrice(array $deliveryAddress) {
 
         return $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'delivery-regions/get-price-for-address',
