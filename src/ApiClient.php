@@ -319,7 +319,7 @@ class ApiClient
 
     private function callApiV1Method(
         string $urlSuffix,
-        string $className,
+        ?string $className,
         array $params = [],
         string $method = 'GET'
     ) {
