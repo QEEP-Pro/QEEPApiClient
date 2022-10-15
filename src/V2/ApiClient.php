@@ -12,6 +12,7 @@ use QEEP\QEEPApiClient\V2\Model\CompanyContact;
 use QEEP\QEEPApiClient\V2\Model\CompanyInfo;
 use QEEP\QEEPApiClient\V2\Model\CustomQuestion;
 use QEEP\QEEPApiClient\V2\Model\DeliveryInterval;
+use QEEP\QEEPApiClient\V2\Model\PickupPoint;
 use QEEP\QEEPApiClient\V2\Model\Product;
 use QEEP\QEEPApiClient\V2\Model\SocialLink;
 
@@ -118,6 +119,15 @@ class ApiClient
         return $this->deserializeArray(
             $this->callApiV2Method('info/get'),
             CompanyInfo::class
+        );
+    }
+
+    /** @return PickupPoint[] */
+    public function getPickupPoints(): array
+    {
+        return $this->deserializeArray(
+            $this->callApiV2Method('pickup-points/get'),
+            PickupPoint::class
         );
     }
 
