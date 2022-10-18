@@ -26,6 +26,18 @@ class DeliveryInterval
 
     /**
      * @JMS\Type("integer")
+     * @JMS\SerializedName("timeFrom")
+     */
+    protected $timeFrom;
+
+    /**
+     * @JMS\Type("integer")
+     * @JMS\SerializedName("timeTo")
+     */
+    protected $timeTo;
+
+    /**
+     * @JMS\Type("integer")
      * @JMS\SerializedName("minuteFrom")
      */
     protected $minuteFrom;
@@ -122,6 +134,30 @@ class DeliveryInterval
     public function setMinuteTo(int $minuteTo): DeliveryInterval
     {
         $this->minuteTo = $minuteTo;
+
+        return $this;
+    }
+
+    public function getTimeTo(): ?int
+    {
+        return $this->timeTo;
+    }
+
+    public function setTimeTo(int $timeTo): DeliveryInterval
+    {
+        $this->timeTo = $timeTo;
+
+        return $this;
+    }
+
+    public function getTimeFrom(): ?int
+    {
+        return $this->timeFrom;
+    }
+
+    public function setTimeFrom(int $timeFrom): DeliveryInterval
+    {
+        $this->timeFrom = $timeFrom;
 
         return $this;
     }
