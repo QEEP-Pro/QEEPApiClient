@@ -15,6 +15,7 @@ use QEEP\QEEPApiClient\V2\Model\DeliveryInterval;
 use QEEP\QEEPApiClient\V2\Model\PickupPoint;
 use QEEP\QEEPApiClient\V2\Model\Product;
 use QEEP\QEEPApiClient\V2\Model\SocialLink;
+use QEEP\QEEPApiClient\V2\Model\StopList;
 
 
 class ApiClient
@@ -110,6 +111,15 @@ class ApiClient
         return $this->deserializeArray(
             $this->callApiV2Method('bonus-system/get'),
             BonusSystem::class
+        );
+    }
+
+    /** @return StopList[] */
+    public function getStopLists(): array
+    {
+        return $this->deserializeArray(
+            $this->callApiV2Method('stop-lists/get'),
+            StopList::class
         );
     }
 
