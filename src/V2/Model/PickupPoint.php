@@ -2,9 +2,9 @@
 
 namespace QEEP\QEEPApiClient\V2\Model;
 
-use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
 use QEEP\QEEPApiClient\V2\Model\utils\Point;
+
 
 class PickupPoint
 {
@@ -25,6 +25,9 @@ class PickupPoint
 
     /** @JMS\Type("QEEP\QEEPApiClient\V2\Model\utils\Point") */
     private $point;
+
+    /** @JMS\Type("array<QEEP\QEEPApiClient\V2\Model\OpeningHours>") */
+    private $openingHours;
 
     public function getId(): ?int
     {
@@ -63,6 +66,25 @@ class PickupPoint
     public function setAddress(?string $address): PickupPoint
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * @return array|OpeningHours[]|null
+     */
+    public function getOpeningHours(): ?array
+    {
+        return $this->openingHours;
+    }
+
+    /**
+     * @param array|OpeningHours[]|null $openingHours
+     * @return PickupPoint
+     */
+    public function setOpeningHours(?array $openingHours): PickupPoint
+    {
+        $this->openingHours = $openingHours;
 
         return $this;
     }
