@@ -15,11 +15,6 @@ class Feedback
     protected $comment;
 
 
-    public function __construct()
-    {
-
-    }
-
     public function setId(int $id): Feedback
     {
         $this->id = $id;
