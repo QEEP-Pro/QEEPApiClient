@@ -10,6 +10,8 @@ class Purchase
 
     protected $amount;
 
+    protected $modifiers;
+
     // QEEP-Pro принимает `code` вместо `id`
 
 //    public function getId() : ?int
@@ -49,6 +51,18 @@ class Purchase
     public function setAmount(int $amount): Purchase
     {
         $this->amount = $amount;
+
+        return $this;
+    }
+
+    public function getModifiers(): ?array
+    {
+        return $this->modifiers;
+    }
+
+    public function setModifiers(?array $modifiers): Purchase
+    {
+        $this->modifiers = $modifiers;
 
         return $this;
     }

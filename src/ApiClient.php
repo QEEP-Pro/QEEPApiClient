@@ -84,7 +84,7 @@ class ApiClient
         if ('success' === $response['status']) {
             return 'success';
         } else {
-            throw new ApiException();
+            throw new ApiException(json_encode($response['errors'], JSON_UNESCAPED_UNICODE));
         }
     }
 
@@ -161,7 +161,7 @@ class ApiClient
         if ('success' === $response['status']) {
             return $response;
         } else {
-            throw new ApiException();
+            throw new ApiException(json_encode($response['errors'], JSON_UNESCAPED_UNICODE));
         }
     }
 
