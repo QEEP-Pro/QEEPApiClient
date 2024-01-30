@@ -148,6 +148,7 @@ class ApiClient
             throw new ApiException('Not Found ' . $paymentMethod, 404, null);
         }
         $order->setPaymentMethod($paymentMethod);
+
         $response =  $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'orders.json/createOrder',
             Order::class,
