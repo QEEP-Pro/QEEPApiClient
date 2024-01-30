@@ -2,6 +2,7 @@
 
 namespace QEEP\QEEPApiClient;
 
+use QEEP\QEEPApiClient\Model\Feedback;
 use QEEP\QEEPApiClient\Model\Order;
 use QEEP\QEEPApiClient\Model\OrderStatus;
 use QEEP\QEEPApiClient\Model\PromoCode;
@@ -63,6 +64,21 @@ class ApiClient
             self::API_ROUTE_PREFIX . 'orders.json/createOrder',
             Order::class,
             $this->serializer->normalize($order),
+            'POST');
+
+        if ('success' === $response['status']) {
+            return 'success';
+        } else {
+            throw new ApiException(json_encode($response['errors'], JSON_UNESCAPED_UNICODE));
+        }
+    }
+
+    public function createFeedback(Feedback $feedback): string
+    {
+        $response =  $this->callApiV1Method(
+            self::API_ROUTE_PREFIX . 'create-feedback',
+            Feedback::class,
+            $this->serializer->normalize($feedback),
             'POST');
 
         if ('success' === $response['status']) {
