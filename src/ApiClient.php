@@ -143,10 +143,13 @@ class ApiClient
     public function createOrderWithOnlinePayment(Order $order): array
     {
         $order->setSalesChannel($this->salesChannel);
+
         $paymentMethod = $order->getPaymentMethod();
+
         if (!in_array($paymentMethod, self::PaymentTypes)) {
             throw new ApiException('Not Found ' . $paymentMethod, 404, null);
         }
+
         $order->setPaymentMethod($paymentMethod);
 
         $response =  $this->callApiV1Method(
