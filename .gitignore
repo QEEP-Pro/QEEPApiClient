@@ -2,3 +2,4 @@ vendor/
 bin/
 .DS_Store
 .php_cs.cache
+.idea

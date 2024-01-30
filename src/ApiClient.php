@@ -20,7 +20,7 @@ use Symfony\Component\Serializer\Serializer;
 
 class ApiClient
 {
-    private const PAYMENT_TYPE_YANDEX = 'yandex_money';
+    private const PaymentTypes = ['sberbank', 'robokassa', 'modulbank'];
 
     const API_ROUTE_PREFIX = '/api/';
 
@@ -60,7 +60,6 @@ class ApiClient
     public function createOrder(Order $order): string
     {
         $order->setSalesChannel($this->salesChannel);
-
         $response =  $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'orders.json/createOrder',
             Order::class,
@@ -70,7 +69,7 @@ class ApiClient
         if ('success' === $response['status']) {
             return 'success';
         } else {
-            throw new ApiException();
+            throw new ApiException(json_encode($response['errors'], JSON_UNESCAPED_UNICODE));
         }
     }
 
@@ -144,7 +143,14 @@ class ApiClient
     public function createOrderWithOnlinePayment(Order $order): array
     {
         $order->setSalesChannel($this->salesChannel);
-        $order->setPaymentMethod(self::PAYMENT_TYPE_YANDEX);
+
+        $paymentMethod = $order->getPaymentMethod();
+
+        if (!in_array($paymentMethod, self::PaymentTypes)) {
+            throw new ApiException('Not Found ' . $paymentMethod, 404, null);
+        }
+
+        $order->setPaymentMethod($paymentMethod);
 
         $response =  $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'orders.json/createOrder',
@@ -369,18 +375,6 @@ class ApiClient
                 $code
             );
         }
-
-//        $rawDecodeClasses = [
-//            'Setting',
-//            Product::class,
-//            self::ORDER,
-//        ];
-//
-//        if (array_search($className, $rawDecodeClasses) === false) {
-//            return $this->serializer->deserialize($response, 'array<' . $className. '>', 'json');
-//        }
-
-//        return $this->serializer->deserialize($response, 'array<' . $className. '>', 'json');
 
         return json_decode($response, true);
     }
