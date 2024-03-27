@@ -117,6 +117,16 @@ class ApiClient
         return $response;
     }
 
+    public function getBonusesByBuyerId(int $buyerId): ?array
+    {
+        $response = $this->callApiV1Method(
+            self::API_ROUTE_PREFIX . 'buyer/bonuses/' . $buyerId,
+            Order::class
+        );
+
+        return $response;
+    }
+
     public function getDeliveryRegionsMapURL(): string
     {
         $params = http_build_query($this->getAuthParams([]));
