@@ -117,14 +117,12 @@ class ApiClient
         return $response;
     }
 
-    public function getBonusesByBuyerId(int $buyerId): ?array
+    public function getBonusesByBuyerId(int $buyerId)
     {
-        $response = $this->callApiV1Method(
+        return $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'buyer/bonuses/' . $buyerId,
-            Order::class
+            null
         );
-
-        return $response;
     }
 
     public function getDeliveryRegionsMapURL(): string
