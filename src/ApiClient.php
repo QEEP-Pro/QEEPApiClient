@@ -120,7 +120,7 @@ class ApiClient
     public function getBonusesByBuyerId(int $buyerId)
     {
         return $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . 'buyer/bonuses/' . $buyerId,
+            self::API_ROUTE_PREFIX . "buyer/{$buyerId}/bonuses",
             null
         );
     }
