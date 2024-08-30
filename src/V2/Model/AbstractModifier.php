@@ -37,6 +37,7 @@ abstract class AbstractModifier
     private $title;
 
     /**
+     * @JMS\Type("bool")
      * @var boolean
      */
     private $required;
