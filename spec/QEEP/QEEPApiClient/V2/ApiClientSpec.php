@@ -149,6 +149,7 @@ class ApiClientSpec extends ObjectBehavior
                      {
                         "id":1,
                         "sku":"333",
+                        "weight": 250,
                         "groupModifiers":[
                            {
                               "id":303,
@@ -160,6 +161,7 @@ class ApiClientSpec extends ObjectBehavior
                                  {
                                     "name":"Сыр чеддер  16 гр",
                                     "price":35,
+                                    "weight":16,
                                     "quantity":null,
                                     "description":"",
                                     "body":null,
@@ -190,6 +192,7 @@ class ApiClientSpec extends ObjectBehavior
                     [(new Variant())
                         ->setId(1)
                         ->setSku(333)
+                        ->setWeight(250)
                         ->setGroupModifiers(
                             [(new GroupModifier())
                                 ->setId(303)
@@ -202,6 +205,7 @@ class ApiClientSpec extends ObjectBehavior
                                     ->setId(77)
                                     ->setName('Сыр чеддер  16 гр')
                                     ->setPrice(35)
+                                    ->setWeight(16)
                                 ])
                             ])
                     ]

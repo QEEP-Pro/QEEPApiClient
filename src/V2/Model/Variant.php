@@ -31,6 +31,12 @@ class Variant
      */
     protected $groupModifiers;
 
+    /**
+     * @JMS\Type("integer")
+     * @var int|null
+     * */
+    protected $weight;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -117,6 +123,18 @@ class Variant
     public function setGroupModifiers(array $groupModifiers): Variant
     {
         $this->groupModifiers = $groupModifiers;
+
+        return $this;
+    }
+
+    public function getWeight(): ?int
+    {
+        return $this->weight;
+    }
+
+    public function setWeight(?int $weight): self
+    {
+        $this->weight = $weight;
 
         return $this;
     }
