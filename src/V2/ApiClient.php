@@ -168,6 +168,22 @@ class ApiClient
         );
     }
 
+    /**
+     * @throws ApiException
+     */
+    public function sendCustomGetRequest(string $urlSuffix, array $params = [])
+    {
+        return $this->callApiV2Method($urlSuffix, $params);
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function sendCustomPostRequest(string $urlSuffix, array $params = [])
+    {
+        return $this->callApiV2Method($urlSuffix, $params, self::HTTP_POST);
+    }
+
     private function callApiV2Method(
         string $urlSuffix,
         array $params = [],
