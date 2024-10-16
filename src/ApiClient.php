@@ -347,6 +347,16 @@ class ApiClient
         ];
     }
 
+    public function sendCustomPostRequest(string $urlSuffix, $params)
+    {
+        return $this->callApiV1Method($urlSuffix, null, $params, 'POST');
+    }
+
+    public function sendCustomGetRequest(string $urlSuffix, $params)
+    {
+        return $this->callApiV1Method($urlSuffix, null, $params);
+    }
+
     private function callApiV1Method(
         string $urlSuffix,
         ?string $className,
