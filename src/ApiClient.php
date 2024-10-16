@@ -125,6 +125,14 @@ class ApiClient
         );
     }
 
+    public function getBonusesByBuyerIdByIikoTransport(int $buyerId)
+    {
+        return   $this->callApiV1Method(
+            self::API_ROUTE_PREFIX . "buyer/{$buyerId}/bonuses-by-iiko-transport",
+            null
+        );
+    }
+
     public function getDeliveryRegionsMapURL(): string
     {
         $params = http_build_query($this->getAuthParams([]));
