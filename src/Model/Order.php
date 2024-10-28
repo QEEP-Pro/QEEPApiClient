@@ -35,6 +35,8 @@ class Order
     protected $comment;
 
     protected $salesChannel;
+    
+    protected $salesPoint;
 
     protected $purchases;
 
@@ -278,6 +280,18 @@ class Order
     public function setSalesChannel(?string $salesChannel): Order
     {
         $this->salesChannel = $salesChannel;
+
+        return $this;
+    }
+
+    public function getSalesPoint(): ?int
+    {
+        return $this->salesPoint;
+    }
+
+    public function setSalesPoint(?int $salesPoint): Order
+    {
+        $this->salesPoint = $salesPoint;
 
         return $this;
     }
