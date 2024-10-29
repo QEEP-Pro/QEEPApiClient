@@ -29,6 +29,9 @@ class PickupPoint
     /** @JMS\Type("array<QEEP\QEEPApiClient\V2\Model\OpeningHours>") */
     private $openingHours;
 
+    /** @JMS\Type("string")  */
+    private $phone;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -109,6 +112,18 @@ class PickupPoint
     public function setPoint(Point $point): PickupPoint
     {
         $this->point = $point;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
 
         return $this;
     }
