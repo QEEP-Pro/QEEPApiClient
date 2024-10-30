@@ -37,6 +37,12 @@ class Variant
      * */
     protected $weight;
 
+    /**
+     * @JMS\Type("integer")
+     * @var int|null
+     * */
+    protected $position;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -135,6 +141,18 @@ class Variant
     public function setWeight(?int $weight): self
     {
         $this->weight = $weight;
+
+        return $this;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(?int $position): self
+    {
+        $this->position = $position;
 
         return $this;
     }
