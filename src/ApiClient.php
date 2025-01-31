@@ -67,7 +67,7 @@ class ApiClient
             'POST');
 
         if ('success' === $response['status']) {
-            return 'success';
+            return $response;
         } else {
             throw new ApiException(json_encode($response['errors'], JSON_UNESCAPED_UNICODE));
         }
