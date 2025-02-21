@@ -57,7 +57,7 @@ class ApiClient
         );
     }
 
-    public function createOrder(Order $order): string
+    public function createOrder(Order $order): array
     {
         $order->setSalesChannel($this->salesChannel);
         $response =  $this->callApiV1Method(
