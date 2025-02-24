@@ -15,7 +15,7 @@ class ApiClientSpec extends ObjectBehavior
         $this->beConstructedWith(...$this->getApiClientParams());
     }
 
-    public function it_is_able_to_create_order()
+    function it_is_able_to_create_order()
     {
         $order = new Order();
         $basket = [[ 'code' => 178, 'amount' => 2, 'price' => 100 ]];
