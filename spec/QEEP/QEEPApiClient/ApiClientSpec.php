@@ -92,12 +92,7 @@ class ApiClientSpec extends ObjectBehavior
             $mockError,
         ]);
 
-        try {
-            $env->enable();
-        } catch (MockEnabledException $e) {
-            $env->disable();
-            $env->enable();
-        }
+        $env->enable();
 
         return $env;
     }
