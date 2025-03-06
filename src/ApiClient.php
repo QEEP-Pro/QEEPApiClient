@@ -73,6 +73,21 @@ class ApiClient
         }
     }
 
+    public function cancelOrder(int $orderId): string
+    {
+        $response = $this->callApiV1Method(
+            self::API_ROUTE_PREFIX . "orders.json/cancelOrder",
+            Order::class,
+            ['order_id' => $orderId]
+        );
+
+        if ('success' === $response['status']) {
+            return 'success';
+        }
+
+        throw new ApiException(json_encode($response['errors'], JSON_UNESCAPED_UNICODE));
+    }
+
     public function getCurrentOrderByBuyerId(int $buyerId)
     {
         return $this->callApiV1Method(
