@@ -62,6 +62,23 @@ class ApiClientSpec extends ObjectBehavior
         $mockCurl->disable();
     }
 
+    public function it_is_able_to_set_paid()
+    {
+        $mockCurl = $this->buildMockCurl('
+            {
+                "status": "success"
+            }
+        ');
+
+        $this->beConstructedWith(...$this->getApiClientParams());
+
+        $result = $this->setPaid(1);
+
+        $result->shouldBe('success');
+
+        $mockCurl->disable();
+    }
+
     private function getApiClientParams()
     {
         return [

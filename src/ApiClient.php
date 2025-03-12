@@ -196,6 +196,21 @@ class ApiClient
         }
     }
 
+    public function setPaid(int $orderId): ?string
+    {
+        $response = $this->callApiV1Method(
+            self::API_ROUTE_PREFIX . "orders.json/setOrderPaidStatus",
+            Order::class,
+            ['order_id' => $orderId]
+        );
+
+        if ($response['status'] === 'success') {
+            return 'success';
+        }
+
+        throw new ApiException($response['message']);
+    }
+
     public function getOrderStatusCode(int $orderNumber): string
     {
         $status = $this->callApiV1Method(
