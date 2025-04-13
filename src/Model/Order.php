@@ -48,6 +48,8 @@ class Order
 
     protected $buyerId;
 
+    protected $isKiosk = null;
+
     public function __construct()
     {
         $this->purchases = [];
@@ -337,5 +339,17 @@ class Order
         $this->paymentMethod = $paymentMethod;
 
         return $this;
+    }
+
+    public function setIsKiosk(): Order
+    {
+        $this->isKiosk = true;
+
+        return $this;
+    }
+
+    public function getIsKiosk(): ?bool
+    {
+        return $this->isKiosk;
     }
 }
