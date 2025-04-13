@@ -57,7 +57,7 @@ class ApiClient
         );
     }
 
-    public function createOrder(Order $order): string
+    public function createOrder(Order $order): array
     {
         $order->setSalesChannel($this->salesChannel);
         $response =  $this->callApiV1Method(
@@ -67,7 +67,7 @@ class ApiClient
             'POST');
 
         if ('success' === $response['status']) {
-            return 'success';
+            return $response;
         } else {
             throw new ApiException(json_encode($response['errors'], JSON_UNESCAPED_UNICODE));
         }
