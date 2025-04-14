@@ -73,6 +73,14 @@ class ApiClient
         }
     }
 
+    public function getOrderByIdAndByBuyerId(int $buyerId, int $orderId)
+    {
+        return $this->callApiV1Method(
+            self::API_ROUTE_PREFIX . "buyer/{$buyerId}/orders/{$orderId}",
+            Order::class
+        );
+    }
+
     public function getCurrentOrderByBuyerId(int $buyerId)
     {
         return $this->callApiV1Method(
