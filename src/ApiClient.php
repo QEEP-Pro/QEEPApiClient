@@ -81,6 +81,14 @@ class ApiClient
         );
     }
 
+    public function getOrdersByBuyerId(int $buyerId)
+    {
+        return $this->callApiV1Method(
+            self::API_ROUTE_PREFIX . "buyer/{$buyerId}/orders",
+            Order::class
+        );
+    }
+
     public function createFeedback(Feedback $feedback): string
     {
         $response =  $this->callApiV1Method(
