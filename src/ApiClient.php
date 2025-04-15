@@ -76,14 +76,10 @@ class ApiClient
     public function cancelOrder(int $orderId): string
     {
         $response = $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . "orders.json/cancelOrder",
+            self::API_ROUTE_PREFIX . 'orders.json/cancelOrder',
             Order::class,
             ['order_id' => $orderId]
         );
-
-        if ('success' === $response['status']) {
-            return 'success';
-        }
 
         throw new ApiException(json_encode($response['errors'], JSON_UNESCAPED_UNICODE));
     }
@@ -360,7 +356,7 @@ class ApiClient
         $paramsString = '';
         foreach ($params as $param) {
             if (is_scalar($param)) {
-                $paramsString .= $param;
+                $paramsString .= $param === false ? '0' : $param;
             }
         }
 
