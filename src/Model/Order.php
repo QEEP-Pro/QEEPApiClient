@@ -341,9 +341,9 @@ class Order
         return $this;
     }
 
-    public function setIsKiosk(): Order
+    public function setIsKiosk(bool $isKiosk): Order
     {
-        $this->isKiosk = true;
+        $this->isKiosk = $isKiosk;
 
         return $this;
     }
