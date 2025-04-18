@@ -54,10 +54,10 @@ class ApiClientSpec extends ObjectBehavior
         ');
 
         $this->beConstructedWith(...$this->getApiClientParams());
-
         $result = $this->cancelOrder(1);
 
-        $result->shouldBe('success');
+        $result->shouldHaveKey('status');
+        $result['status']->shouldBe('success');
 
         $mockCurl->disable();
     }
