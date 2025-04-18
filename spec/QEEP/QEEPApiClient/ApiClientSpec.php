@@ -74,7 +74,8 @@ class ApiClientSpec extends ObjectBehavior
 
         $result = $this->setPaid(1);
 
-        $result->shouldBe('success');
+        $result->shouldHaveKey('status');
+        $result['status']->shouldBe('success');
 
         $mockCurl->disable();
     }
