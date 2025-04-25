@@ -5,7 +5,6 @@ namespace QEEP\QEEPApiClient\V2\Model;
 use JMS\Serializer\Annotation as JMS;
 use QEEP\QEEPApiClient\V2\Model\utils\Point;
 
-
 class PickupPoint
 {
     /** @JMS\Type("integer") */
@@ -83,7 +82,6 @@ class PickupPoint
 
     /**
      * @param array|OpeningHours[]|null $openingHours
-     * @return PickupPoint
      */
     public function setOpeningHours(?array $openingHours): PickupPoint
     {

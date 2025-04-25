@@ -31,7 +31,7 @@ class Article
     public function __construct()
     {
         $this->created = new \DateTime();
-        $this->images  = [];
+        $this->images = [];
     }
 
     public function setId(int $id): Article

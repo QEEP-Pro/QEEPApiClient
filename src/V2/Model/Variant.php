@@ -27,18 +27,21 @@ class Variant
     /**
      * @JMS\SerializedName("groupModifiers")
      * @JMS\Type("array<QEEP\QEEPApiClient\V2\Model\GroupModifier>")
+     *
      * @var GroupModifier[]
      */
     protected $groupModifiers;
 
     /**
      * @JMS\Type("integer")
+     *
      * @var int|null
      * */
     protected $weight;
 
     /**
      * @JMS\Type("integer")
+     *
      * @var int|null
      * */
     protected $position;
@@ -114,6 +117,7 @@ class Variant
 
         return $this;
     }
+
     /**
      * @return GroupModifier[]
      */
@@ -124,7 +128,6 @@ class Variant
 
     /**
      * @param GroupModifier[] $groupModifiers
-     * @return Variant
      */
     public function setGroupModifiers(array $groupModifiers): Variant
     {

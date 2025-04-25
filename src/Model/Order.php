@@ -35,7 +35,7 @@ class Order
     protected $comment;
 
     protected $salesChannel;
-    
+
     protected $salesPoint;
 
     protected $purchases;
@@ -137,8 +137,7 @@ class Order
     public function getBuyerAddress(): ?string
     {
         return $this->buyerAddress;
-        }
-
+    }
 
     public function setBuyerAddress(?string $buyerAddress): Order
     {

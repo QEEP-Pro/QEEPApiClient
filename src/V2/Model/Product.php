@@ -193,7 +193,7 @@ class Product
         return $this->variants;
     }
 
-    public function setVariants(array  $variants): Product
+    public function setVariants(array $variants): Product
     {
         $this->variants = $variants;
 
@@ -217,7 +217,7 @@ class Product
         return $this->brand;
     }
 
-    public function setBrand(array  $brand): Product
+    public function setBrand(array $brand): Product
     {
         $this->brand = $brand;
 
@@ -229,7 +229,7 @@ class Product
         return $this->categories;
     }
 
-    public function setCategories(array  $categories): Product
+    public function setCategories(array $categories): Product
     {
         $this->categories = $categories;
 

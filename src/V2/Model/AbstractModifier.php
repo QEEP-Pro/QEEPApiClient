@@ -9,36 +9,40 @@ abstract class AbstractModifier
     /**
      * @JMS\Type("integer")
      */
-
     private $id;
 
     /**
      * @JMS\Type("integer")
+     *
      * @var int
      */
     private $maxAmount;
 
     /**
      * @JMS\Type("integer")
+     *
      * @var int
      */
     private $minAmount;
 
     /**
      * @JMS\Type("integer")
+     *
      * @var int
      */
     private $defaultAmount;
 
     /**
      * @JMS\Type("string")
+     *
      * @var string
      */
     private $title;
 
     /**
      * @JMS\Type("bool")
-     * @var boolean
+     *
+     * @var bool
      */
     private $required;
 

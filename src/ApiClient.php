@@ -2,17 +2,17 @@
 
 namespace QEEP\QEEPApiClient;
 
-use QEEP\QEEPApiClient\Model\Feedback;
-use QEEP\QEEPApiClient\Model\Order;
-use QEEP\QEEPApiClient\Model\OrderStatus;
-use QEEP\QEEPApiClient\Model\PromoCode;
-use QEEP\QEEPApiClient\Model\Question;
-use QEEP\QEEPApiClient\Model\Tag;
-use QEEP\QEEPApiClient\Model\Product;
-use QEEP\QEEPApiClient\Model\Setting;
 use QEEP\QEEPApiClient\Model\Article;
 use QEEP\QEEPApiClient\Model\ArticleType;
 use QEEP\QEEPApiClient\Model\Brand;
+use QEEP\QEEPApiClient\Model\Feedback;
+use QEEP\QEEPApiClient\Model\Order;
+use QEEP\QEEPApiClient\Model\OrderStatus;
+use QEEP\QEEPApiClient\Model\Product;
+use QEEP\QEEPApiClient\Model\PromoCode;
+use QEEP\QEEPApiClient\Model\Question;
+use QEEP\QEEPApiClient\Model\Setting;
+use QEEP\QEEPApiClient\Model\Tag;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
@@ -45,11 +45,11 @@ class ApiClient
         string $salesChannel,
         string $imageUrl
     ) {
-        $this->clientId     = $clientId;
+        $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
-        $this->url          = $crmUrl;
+        $this->url = $crmUrl;
         $this->salesChannel = $salesChannel;
-        $this->imageUrl     = $imageUrl;
+        $this->imageUrl = $imageUrl;
 
         $this->serializer = new Serializer(
             [new ObjectNormalizer(null, new CamelCaseToSnakeCaseNameConverter())],
@@ -60,7 +60,7 @@ class ApiClient
     public function createOrder(Order $order): array
     {
         $order->setSalesChannel($this->salesChannel);
-        $response =  $this->callApiV1Method(
+        $response = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'orders.json/createOrder',
             Order::class,
             $this->serializer->normalize($order),
@@ -83,7 +83,7 @@ class ApiClient
 
     public function createFeedback(Feedback $feedback): string
     {
-        $response =  $this->callApiV1Method(
+        $response = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'create-feedback',
             Feedback::class,
             $this->serializer->normalize($feedback),
@@ -96,8 +96,8 @@ class ApiClient
         }
     }
 
-    public function getDeliveryPrice(array $deliveryAddress) {
-
+    public function getDeliveryPrice(array $deliveryAddress)
+    {
         return $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'delivery-regions/get-price-for-address',
             null,
@@ -168,7 +168,7 @@ class ApiClient
 
         $order->setPaymentMethod($paymentMethod);
 
-        $response =  $this->callApiV1Method(
+        $response = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'orders.json/createOrder',
             Order::class,
             $this->serializer->normalize($order),
@@ -350,7 +350,7 @@ class ApiClient
         }
 
         return [
-            'client_id'    => $this->clientId,
+            'client_id' => $this->clientId,
             'access_token' => md5($this->clientId . $this->clientSecret . $paramsString),
         ];
     }
@@ -372,8 +372,8 @@ class ApiClient
         string $method = 'GET'
     ) {
         $params = http_build_query($params + $this->getAuthParams($params));
-        $ch     = curl_init();
-        $url    = $this->url . $urlSuffix;
+        $ch = curl_init();
+        $url = $this->url . $urlSuffix;
 
         switch ($method) {
             case 'GET':
@@ -391,15 +391,12 @@ class ApiClient
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $response = curl_exec($ch);
-        $error    = curl_error($ch);
-        $code     = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $error = curl_error($ch);
+        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
         if ($error || 200 != $code) {
-            throw new ApiException(
-                'Curl returned error' . $error . ' code: ' . $code . ' params ' . $params,
-                $code
-            );
+            throw new ApiException('Curl returned error' . $error . ' code: ' . $code . ' params ' . $params, $code);
         }
 
         return json_decode($response, true);

@@ -14,7 +14,6 @@ class Feedback
 
     protected $comment;
 
-
     public function setId(int $id): Feedback
     {
         $this->id = $id;
@@ -49,5 +48,4 @@ class Feedback
 
         return $this;
     }
-
 }
