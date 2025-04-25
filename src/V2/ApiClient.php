@@ -66,7 +66,7 @@ class ApiClient
     public function getCategories(): array
     {
         return $this->deserializeArray(
-            $this->callApiV2Method('categories/get'),
+            $this->callApiV2Method('categories/get') ?? [],
             Category::class
         );
     }
@@ -75,7 +75,7 @@ class ApiClient
     public function getBrands(): array
     {
         return $this->deserializeArray(
-            $this->callApiV2Method('brands/get'),
+            $this->callApiV2Method('brands/get') ?? [],
             Brand::class
         );
     }
@@ -84,7 +84,7 @@ class ApiClient
     public function getProducts(): array
     {
         return $this->deserializeArray(
-            $this->callApiV2Method('products/get'),
+            $this->callApiV2Method('products/get') ?? [],
             Product::class
         );
     }
@@ -93,7 +93,7 @@ class ApiClient
     public function getCustomQuestions(): array
     {
         return $this->deserializeArray(
-             $this->callApiV2Method('questions/get'),
+             $this->callApiV2Method('questions/get') ?? [],
              CustomQuestion::class
          );
     }
@@ -101,14 +101,14 @@ class ApiClient
     /** @return string[] */
     public function getCities(): array
     {
-        return $this->callApiV2Method('cities/get');
+        return $this->callApiV2Method('cities/get') ?? [];
     }
 
     /** @return BonusSystem[] */
     public function getBonusSystems(): array
     {
         return $this->deserializeArray(
-            $this->callApiV2Method('bonus-system/get'),
+            $this->callApiV2Method('bonus-system/get') ?? [],
             BonusSystem::class
         );
     }
@@ -117,7 +117,7 @@ class ApiClient
     public function getStopLists(): array
     {
         return $this->deserializeArray(
-            $this->callApiV2Method('stop-lists/get'),
+            $this->callApiV2Method('stop-lists/get') ?? [],
             StopList::class
         );
     }
@@ -126,7 +126,7 @@ class ApiClient
     public function getInfo(): array
     {
         return $this->deserializeArray(
-            $this->callApiV2Method('info/get'),
+            $this->callApiV2Method('info/get') ?? [],
             CompanyInfo::class
         );
     }
@@ -135,7 +135,7 @@ class ApiClient
     public function getPickupPoints(): array
     {
         return $this->deserializeArray(
-            $this->callApiV2Method('pickup-points/get'),
+            $this->callApiV2Method('pickup-points/get') ?? [],
             PickupPoint::class
         );
     }
@@ -144,7 +144,7 @@ class ApiClient
     public function getContacts(): array
     {
         return $this->deserializeArray(
-            $this->callApiV2Method('contacts/get'),
+            $this->callApiV2Method('contacts/get') ?? [],
             CompanyContact::class
         );
     }
@@ -153,7 +153,7 @@ class ApiClient
     public function getSocialLinks(): array
     {
         return $this->deserializeArray(
-            $this->callApiV2Method('links/get'),
+            $this->callApiV2Method('links/get') ?? [],
             SocialLink::class
         );
     }
@@ -162,7 +162,7 @@ class ApiClient
     public function getDeliveryIntervals(): array
     {
         return $this->deserializeArray(
-            $this->callApiV2Method('delivery-intervals/get'),
+            $this->callApiV2Method('delivery-intervals/get') ?? [],
             DeliveryInterval::class
         );
     }

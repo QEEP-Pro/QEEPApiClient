@@ -231,7 +231,7 @@ class ApiClient
         $rawStatuses = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'list.json/getStatuses',
             OrderStatus::class
-        );
+        ) ?? [];
 
         $statuses = [];
         foreach ($rawStatuses as $rawStatus) {
@@ -249,7 +249,7 @@ class ApiClient
         $rawProducts = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'catalog.json/getAll',
             Product::class
-        );
+        ) ?? [];
 
         $products = [];
         foreach ($rawProducts as $rawProduct) {
@@ -267,7 +267,7 @@ class ApiClient
         $rawTags = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'list.json/getCategories',
             Tag::class
-        );
+        ) ?? [];
 
         $tags = [];
         foreach ($rawTags as $rawTag) {
@@ -284,7 +284,7 @@ class ApiClient
         $rawQuestions = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'list.json/getQuestions',
             Question::class
-        );
+        ) ?? [];
 
         $questions = [];
         foreach ($rawQuestions as $rawQuestion) {
@@ -303,7 +303,7 @@ class ApiClient
         $rawArticleTypes = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'articles.json/getTypes',
             ArticleType::class
-        );
+        ) ?? [];
 
         $articleTypes = [];
         foreach ($rawArticleTypes as $rawArticleType) {
@@ -322,7 +322,7 @@ class ApiClient
         $rawArticles = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'articles.json/getAll',
             Article::class
-        );
+        ) ?? [];
 
         $articles = [];
         foreach ($rawArticles as $rawArticle) {
@@ -341,7 +341,7 @@ class ApiClient
         $rawSettings = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'list.json/getSettings',
             Setting::class
-        );
+        ) ?? [];
 
         $settings = [];
         foreach ($rawSettings as $key => $value) {
@@ -360,7 +360,7 @@ class ApiClient
         $rawBrands = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'list.json/getBrands',
             Brand::class
-        );
+        ) ?? [];
 
         $brands = [];
         foreach ($rawBrands as $rawBrand) {
