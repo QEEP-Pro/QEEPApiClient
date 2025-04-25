@@ -21,9 +21,9 @@ class ApiException extends \Exception
     ) {
         parent::__construct($message, $apiErrorCode, $previous);
 
-        $this->curlError    = $curlError;
+        $this->curlError = $curlError;
         $this->apiErrorCode = $apiErrorCode;
-        $this->apiParams    = $apiParams;
+        $this->apiParams = $apiParams;
     }
 
     public function getCurlError()

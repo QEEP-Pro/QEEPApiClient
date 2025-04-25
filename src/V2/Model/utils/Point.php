@@ -10,14 +10,14 @@ use JMS\Serializer\Annotation as JMS;
 class Point
 {
     /**
-     * @JMS\Type("float") 
+     * @JMS\Type("float")
      * @JMS\SerializedName("lat")
      * @JMS\Expose
      */
     private $lat;
 
     /**
-     * @JMS\Type("float") 
+     * @JMS\Type("float")
      * @JMS\SerializedName("lng")
      * @JMS\Expose
      */
@@ -28,7 +28,7 @@ class Point
         $this->lat = $lat;
         $this->lng = $lng;
     }
-    
+
     public function getLat(): float
     {
         return $this->lat;

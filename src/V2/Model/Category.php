@@ -68,7 +68,7 @@ class Category
         return $this->description;
     }
 
-    public function setDescription(?String $description): Category
+    public function setDescription(?string $description): Category
     {
         $this->description = $description;
 

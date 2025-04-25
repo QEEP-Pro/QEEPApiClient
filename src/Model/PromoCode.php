@@ -4,7 +4,7 @@ namespace QEEP\QEEPApiClient\Model;
 
 class PromoCode
 {
-    /** @var integer */
+    /** @var int */
     private $id;
 
     /** @var string */
@@ -16,10 +16,10 @@ class PromoCode
     /** @var string */
     private $discountType;
 
-    /** @var integer */
+    /** @var int */
     private $usageLimit;
 
-    /** @var boolean */
+    /** @var bool */
     private $firstOrderOnly;
 
     public function getId(): ?int

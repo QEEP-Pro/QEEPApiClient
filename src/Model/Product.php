@@ -25,7 +25,7 @@ class Product
     public function __construct()
     {
         $this->categoryIds = [];
-        $this->photos      = [];
+        $this->photos = [];
     }
 
     public function getId(): ?int

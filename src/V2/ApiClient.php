@@ -17,10 +17,9 @@ use QEEP\QEEPApiClient\V2\Model\Product;
 use QEEP\QEEPApiClient\V2\Model\SocialLink;
 use QEEP\QEEPApiClient\V2\Model\StopList;
 
-
 class ApiClient
 {
-    const HTTP_GET  = 'HTTP_GET';
+    const HTTP_GET = 'HTTP_GET';
     const HTTP_POST = 'HTTP_POST';
 
     const API_ROUTE_PREFIX = '/api/v2/';
@@ -48,11 +47,11 @@ class ApiClient
         string $salesChannel,
         string $imageUrl
     ) {
-        $this->clientId     = $clientId;
+        $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
-        $this->url          = $crmUrl;
+        $this->url = $crmUrl;
         $this->salesChannel = $salesChannel;
-        $this->imageUrl     = $imageUrl;
+        $this->imageUrl = $imageUrl;
 
         $this->jms = SerializerBuilder::create()
             ->setPropertyNamingStrategy(
@@ -190,8 +189,8 @@ class ApiClient
         string $method = self::HTTP_GET
     ) {
         $params = http_build_query($params + $this->getAuthParams($params));
-        $ch     = curl_init();
-        $url    = $this->url . self::API_ROUTE_PREFIX . $urlSuffix;
+        $ch = curl_init();
+        $url = $this->url . self::API_ROUTE_PREFIX . $urlSuffix;
 
         switch ($method) {
             case self::HTTP_GET:
@@ -209,8 +208,8 @@ class ApiClient
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $response = curl_exec($ch);
-        $error    = curl_error($ch);
-        $code     = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $error = curl_error($ch);
+        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
         if ($error || 200 != $code) {
@@ -243,7 +242,7 @@ class ApiClient
         }
 
         return [
-            'client_id'    => $this->clientId,
+            'client_id' => $this->clientId,
             'access_token' => md5($this->clientId . $this->clientSecret . $paramsString),
         ];
     }

@@ -4,7 +4,6 @@ namespace QEEP\QEEPApiClient\V2\Model;
 
 use JMS\Serializer\Annotation as JMS;
 
-
 class OpeningHours extends AbstractModifier
 {
     /** @JMS\Type("integer") */
@@ -110,16 +109,12 @@ class OpeningHours extends AbstractModifier
         return $this;
     }
 
-    /**
-     * @return PickupPoint
-     */
     public function getSalesPoint(): PickupPoint
     {
         return $this->salesPoint;
     }
 
     /**
-     * @param PickupPoint $salesPoint
      * @return $this
      */
     public function setSalesPoint(PickupPoint $salesPoint)
