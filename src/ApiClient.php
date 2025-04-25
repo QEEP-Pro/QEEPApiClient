@@ -64,7 +64,8 @@ class ApiClient
             self::API_ROUTE_PREFIX . 'orders.json/createOrder',
             Order::class,
             $this->serializer->normalize($order),
-            'POST');
+            'POST'
+        );
 
         if ('success' === $response['status']) {
             return $response;
@@ -91,7 +92,7 @@ class ApiClient
     public function getCurrentOrderByBuyerId(int $buyerId)
     {
         return $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . "buyer/{$buyerId}/current-order",
+            self::API_ROUTE_PREFIX . "buyer/$buyerId/current-order",
             Order::class
         );
     }
@@ -102,7 +103,8 @@ class ApiClient
             self::API_ROUTE_PREFIX . 'create-feedback',
             Feedback::class,
             $this->serializer->normalize($feedback),
-            'POST');
+            'POST'
+        );
 
         if ('success' === $response['status']) {
             return 'success';
@@ -143,7 +145,7 @@ class ApiClient
     public function getBonusesByBuyerId(int $buyerId)
     {
         return $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . "buyer/{$buyerId}/bonuses",
+            self::API_ROUTE_PREFIX . "buyer/$buyerId/bonuses",
             null
         );
     }
@@ -152,14 +154,14 @@ class ApiClient
     {
         $params = http_build_query($this->getAuthParams([]));
 
-        return  $this->url . self::API_ROUTE_PREFIX . 'delivery-regions/delivery-regions-map?' . $params;
+        return $this->url . self::API_ROUTE_PREFIX . 'delivery-regions/delivery-regions-map?' . $params;
     }
 
     public function getPickupPointsMapURL(): string
     {
         $params = http_build_query($this->getAuthParams([]));
 
-        return  $this->url . self::API_ROUTE_PREFIX . 'delivery-regions/pickup-points-map?' . $params;
+        return $this->url . self::API_ROUTE_PREFIX . 'delivery-regions/pickup-points-map?' . $params;
     }
 
     public function getPromoCode(string $promoCodeName)
@@ -187,7 +189,8 @@ class ApiClient
             self::API_ROUTE_PREFIX . 'orders.json/createOrder',
             Order::class,
             $this->serializer->normalize($order),
-            'POST');
+            'POST'
+        );
 
         if ('success' === $response['status']) {
             return $response;
@@ -199,7 +202,7 @@ class ApiClient
     public function setPaid(int $orderId): ?string
     {
         $response = $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . "orders.json/setOrderPaidStatus",
+            self::API_ROUTE_PREFIX . 'orders.json/setOrderPaidStatus',
             Order::class,
             ['order_id' => $orderId]
         );
@@ -369,6 +372,16 @@ class ApiClient
         return $brands;
     }
 
+    public function sendCustomPostRequest(string $urlSuffix, $params)
+    {
+        return $this->callApiV1Method($urlSuffix, null, $params, 'POST');
+    }
+
+    public function sendCustomGetRequest(string $urlSuffix, $params)
+    {
+        return $this->callApiV1Method($urlSuffix, null, $params);
+    }
+
     private function getAuthParams(array $params): array
     {
         ksort($params);
@@ -383,16 +396,6 @@ class ApiClient
             'client_id' => $this->clientId,
             'access_token' => md5($this->clientId . $this->clientSecret . $paramsString),
         ];
-    }
-
-    public function sendCustomPostRequest(string $urlSuffix, $params)
-    {
-        return $this->callApiV1Method($urlSuffix, null, $params, 'POST');
-    }
-
-    public function sendCustomGetRequest(string $urlSuffix, $params)
-    {
-        return $this->callApiV1Method($urlSuffix, null, $params);
     }
 
     private function callApiV1Method(
