@@ -45,6 +45,23 @@ class ApiClientSpec extends ObjectBehavior
         $mockCurl->disable();
     }
 
+    public function it_is_able_to_cancel_order()
+    {
+        $mockCurl = $this->buildMockCurl('
+            {
+                "status": "success"
+            }
+        ');
+
+        $this->beConstructedWith(...$this->getApiClientParams());
+        $result = $this->cancelOrder(1);
+
+        $result->shouldHaveKey('status');
+        $result['status']->shouldBe('success');
+
+        $mockCurl->disable();
+    }
+
     private function getApiClientParams()
     {
         return [
