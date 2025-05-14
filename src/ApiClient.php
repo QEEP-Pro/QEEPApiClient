@@ -199,7 +199,7 @@ class ApiClient
         }
     }
 
-    public function setPaid(int $orderId): ?string
+    public function setPaid(int $orderId): ?array
     {
         $response = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'orders.json/setOrderPaidStatus',
@@ -208,7 +208,7 @@ class ApiClient
         );
 
         if ($response['status'] === 'success') {
-            return 'success';
+            return $response;
         }
 
         throw new ApiException($response['message']);
