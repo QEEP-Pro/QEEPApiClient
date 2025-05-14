@@ -382,6 +382,22 @@ class ApiClient
         return $this->callApiV1Method($urlSuffix, null, $params);
     }
 
+    public function onlinePayment(Order $order): array
+    {
+        try {
+            $response = $this->callApiV1Method(
+                self::API_ROUTE_PREFIX . 'payments/qr',
+                Order::class,
+                $this->serializer->normalize($order),
+                'POST'
+            );
+        } catch (ApiException $e) {
+            throw new ApiException('Ошибка оплаты');
+        }
+
+        return $response;
+    }
+
     private function getAuthParams(array $params): array
     {
         ksort($params);
