@@ -9,7 +9,6 @@ use QEEP\QEEPApiClient\Model\Feedback;
 use QEEP\QEEPApiClient\Model\Order;
 use QEEP\QEEPApiClient\Model\OrderStatus;
 use QEEP\QEEPApiClient\Model\Product;
-use QEEP\QEEPApiClient\Model\PromoCode;
 use QEEP\QEEPApiClient\Model\Question;
 use QEEP\QEEPApiClient\Model\Setting;
 use QEEP\QEEPApiClient\Model\Tag;
@@ -62,7 +61,6 @@ class ApiClient
         $order->setSalesChannel($this->salesChannel);
         $response = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'orders.json/createOrder',
-            Order::class,
             $this->serializer->normalize($order),
             'POST'
         );
@@ -78,7 +76,6 @@ class ApiClient
     {
         $response = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'orders.json/cancelOrder',
-            Order::class,
             ['order_id' => $orderId]
         );
 
@@ -92,8 +89,7 @@ class ApiClient
     public function getCurrentOrderByBuyerId(int $buyerId)
     {
         return $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . "buyer/$buyerId/current-order",
-            Order::class
+            self::API_ROUTE_PREFIX . "buyer/$buyerId/current-order"
         );
     }
 
@@ -101,7 +97,6 @@ class ApiClient
     {
         $response = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'create-feedback',
-            Feedback::class,
             $this->serializer->normalize($feedback),
             'POST'
         );
@@ -117,7 +112,6 @@ class ApiClient
     {
         return $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'delivery-regions/get-price-for-address',
-            null,
             $deliveryAddress
         );
     }
@@ -125,8 +119,7 @@ class ApiClient
     public function requestAuthCode(string $phone): ?string
     {
         $response = $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . 'auth/request-code/' . $phone,
-            Order::class
+            self::API_ROUTE_PREFIX . 'auth/request-code/' . $phone
         );
 
         return $response;
@@ -135,8 +128,7 @@ class ApiClient
     public function checkAuthCode(string $phone, int $code): ?array
     {
         $response = $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . 'auth/check-code/' . $phone . '/' . $code,
-            Order::class
+            self::API_ROUTE_PREFIX . 'auth/check-code/' . $phone . '/' . $code
         );
 
         return $response;
@@ -145,8 +137,7 @@ class ApiClient
     public function getBonusesByBuyerId(int $buyerId)
     {
         return $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . "buyer/$buyerId/bonuses",
-            null
+            self::API_ROUTE_PREFIX . "buyer/$buyerId/bonuses"
         );
     }
 
@@ -168,7 +159,6 @@ class ApiClient
     {
         return $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'promo-code/get',
-            PromoCode::class,
             ['promoCode' => $promoCodeName]
         );
     }
@@ -187,7 +177,6 @@ class ApiClient
 
         $response = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'orders.json/createOrder',
-            Order::class,
             $this->serializer->normalize($order),
             'POST'
         );
@@ -203,7 +192,6 @@ class ApiClient
     {
         $response = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'orders.json/setOrderPaidStatus',
-            Order::class,
             ['order_id' => $orderId]
         );
 
@@ -218,7 +206,6 @@ class ApiClient
     {
         $status = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'orders.json/getStatus',
-            Order::class,
             ['order_id' => $orderNumber]
         );
 
@@ -229,8 +216,7 @@ class ApiClient
     public function getOrdersStatuses(): array
     {
         $rawStatuses = $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . 'list.json/getStatuses',
-            OrderStatus::class
+            self::API_ROUTE_PREFIX . 'list.json/getStatuses'
         ) ?? [];
 
         $statuses = [];
@@ -247,8 +233,7 @@ class ApiClient
     public function getProducts(): array
     {
         $rawProducts = $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . 'catalog.json/getAll',
-            Product::class
+            self::API_ROUTE_PREFIX . 'catalog.json/getAll'
         ) ?? [];
 
         $products = [];
@@ -265,8 +250,7 @@ class ApiClient
     public function getTags(): array
     {
         $rawTags = $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . 'list.json/getCategories',
-            Tag::class
+            self::API_ROUTE_PREFIX . 'list.json/getCategories'
         ) ?? [];
 
         $tags = [];
@@ -282,8 +266,7 @@ class ApiClient
     public function getQuestions(): array
     {
         $rawQuestions = $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . 'list.json/getQuestions',
-            Question::class
+            self::API_ROUTE_PREFIX . 'list.json/getQuestions'
         ) ?? [];
 
         $questions = [];
@@ -301,8 +284,7 @@ class ApiClient
     {
         /** @var array $rawArticleTypes */
         $rawArticleTypes = $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . 'articles.json/getTypes',
-            ArticleType::class
+            self::API_ROUTE_PREFIX . 'articles.json/getTypes'
         ) ?? [];
 
         $articleTypes = [];
@@ -320,8 +302,7 @@ class ApiClient
     {
         /** @var array $rawArticles */
         $rawArticles = $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . 'articles.json/getAll',
-            Article::class
+            self::API_ROUTE_PREFIX . 'articles.json/getAll'
         ) ?? [];
 
         $articles = [];
@@ -339,8 +320,7 @@ class ApiClient
     {
         /** @var array $rawSettings */
         $rawSettings = $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . 'list.json/getSettings',
-            Setting::class
+            self::API_ROUTE_PREFIX . 'list.json/getSettings'
         ) ?? [];
 
         $settings = [];
@@ -358,8 +338,7 @@ class ApiClient
     {
         /** @var array $rawBrands */
         $rawBrands = $this->callApiV1Method(
-            self::API_ROUTE_PREFIX . 'list.json/getBrands',
-            Brand::class
+            self::API_ROUTE_PREFIX . 'list.json/getBrands'
         ) ?? [];
 
         $brands = [];
@@ -374,12 +353,12 @@ class ApiClient
 
     public function sendCustomPostRequest(string $urlSuffix, $params)
     {
-        return $this->callApiV1Method($urlSuffix, null, $params, 'POST');
+        return $this->callApiV1Method($urlSuffix, $params, 'POST');
     }
 
     public function sendCustomGetRequest(string $urlSuffix, $params)
     {
-        return $this->callApiV1Method($urlSuffix, null, $params);
+        return $this->callApiV1Method($urlSuffix, $params);
     }
 
     public function getPaymentQR(Order $order): array
@@ -387,7 +366,6 @@ class ApiClient
         try {
             $response = $this->callApiV1Method(
                 self::API_ROUTE_PREFIX . 'payments/qr',
-                Order::class,
                 $this->serializer->normalize($order),
                 'POST'
             );
@@ -416,7 +394,6 @@ class ApiClient
 
     private function callApiV1Method(
         string $urlSuffix,
-        ?string $className,
         array $params = [],
         string $method = 'GET'
     ) {
