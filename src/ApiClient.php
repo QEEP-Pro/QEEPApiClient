@@ -9,7 +9,6 @@ use QEEP\QEEPApiClient\Model\Feedback;
 use QEEP\QEEPApiClient\Model\Order;
 use QEEP\QEEPApiClient\Model\OrderStatus;
 use QEEP\QEEPApiClient\Model\Product;
-use QEEP\QEEPApiClient\Model\PromoCode;
 use QEEP\QEEPApiClient\Model\Question;
 use QEEP\QEEPApiClient\Model\Setting;
 use QEEP\QEEPApiClient\Model\Tag;
