@@ -199,7 +199,7 @@ class ApiClient
         }
     }
 
-    public function setPaid(int $orderId): ?string
+    public function setPaid(int $orderId): ?array
     {
         $response = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'orders.json/setOrderPaidStatus',
@@ -208,7 +208,7 @@ class ApiClient
         );
 
         if ($response['status'] === 'success') {
-            return 'success';
+            return $response;
         }
 
         throw new ApiException($response['message']);
@@ -380,6 +380,22 @@ class ApiClient
     public function sendCustomGetRequest(string $urlSuffix, $params)
     {
         return $this->callApiV1Method($urlSuffix, null, $params);
+    }
+
+    public function getPaymentQR(Order $order): array
+    {
+        try {
+            $response = $this->callApiV1Method(
+                self::API_ROUTE_PREFIX . 'payments/qr',
+                Order::class,
+                $this->serializer->normalize($order),
+                'POST'
+            );
+        } catch (ApiException $e) {
+            throw new ApiException('Ошибка оплаты');
+        }
+
+        return $response;
     }
 
     private function getAuthParams(array $params): array
