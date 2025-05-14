@@ -382,7 +382,7 @@ class ApiClient
         return $this->callApiV1Method($urlSuffix, null, $params);
     }
 
-    public function onlinePayment(Order $order): array
+    public function getPaymentQR(Order $order): array
     {
         try {
             $response = $this->callApiV1Method(
