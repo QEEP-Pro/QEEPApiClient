@@ -50,9 +50,12 @@ class Order
 
     protected $isKiosk = null;
 
+    protected $extraData;
+
     public function __construct()
     {
         $this->purchases = [];
+        $this->extraData = [];
     }
 
     // QEEP-Pro принимает `orderId` вместо `id`
@@ -350,5 +353,17 @@ class Order
     public function getIsKiosk(): ?bool
     {
         return $this->isKiosk;
+    }
+
+    public function getExtraData(): ?array
+    {
+        return $this->extraData;
+    }
+
+    public function addExtraData(?array $extraData): Order
+    {
+        $this->extraData = array_merge($this->extraData, $extraData);
+
+        return $this;
     }
 }

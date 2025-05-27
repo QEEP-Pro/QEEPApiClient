@@ -1,0 +1,9 @@
+services:
+  api_client:
+    container_name: 'api_client'
+    build:
+      dockerfile: ./Dockerfile
+    restart: always
+    volumes:
+      - .:/var/www
+      - ./vendor:/var/www/vendor
