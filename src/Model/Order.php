@@ -55,7 +55,6 @@ class Order
     public function __construct()
     {
         $this->purchases = [];
-        $this->extraData = [];
     }
 
     // QEEP-Pro принимает `orderId` вместо `id`
@@ -355,14 +354,20 @@ class Order
         return $this->isKiosk;
     }
 
-    public function getExtraData(): ?array
+    public function getExtraData(): ?string
     {
+        if (!$this->extraData) {
+            return null;
+        }
+
         return $this->extraData;
     }
 
-    public function addExtraData(?array $extraData): Order
+    public function addExtraData(array $data): Order
     {
-        $this->extraData = array_merge($this->extraData, $extraData);
+        $extraData = json_decode($this->extraData, true) ?: [];
+        $newExtraData = array_merge($extraData, $data);
+        $this->extraData = json_encode($newExtraData);
 
         return $this;
     }
