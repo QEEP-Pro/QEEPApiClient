@@ -188,6 +188,19 @@ class ApiClient
         }
     }
 
+    public function getReceiptQr(int $paymentId)
+    {
+        $response = $this->callApiV1Method(
+            self::API_ROUTE_PREFIX . 'orders.json/getReceiptQr/' . $paymentId
+        );
+
+        if ($response->status !== 200) {
+            return $response;
+        }
+
+        throw new ApiException(json_encode($response['errors'], JSON_UNESCAPED_UNICODE));
+    }
+
     public function setPaid(int $orderId): ?array
     {
         $response = $this->callApiV1Method(
