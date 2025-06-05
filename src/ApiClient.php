@@ -190,24 +190,12 @@ class ApiClient
 
     public function getReceiptQr(int $receiptId)
     {
-        try {
-            $response = $this->callApiV1Method(self::API_ROUTE_PREFIX . 'orders.json/getReceiptQr/' . $receiptId);
-        } catch (ApiException $e) {
-            throw new ApiException($e->getMessage(), $e->getCode());
-        }
-
-        return $response;
+        return $this->callApiV1Method(self::API_ROUTE_PREFIX . 'orders.json/getReceiptQr/' . $receiptId);
     }
 
     public function generateReceipt(int $orderId): array
     {
-        try {
-            $response = $this->callApiV1Method(self::API_ROUTE_PREFIX . 'orders.json/generateReceipt/' . $orderId);
-        } catch (ApiException $e) {
-            throw new ApiException($e->getMessage(), $e->getCode());
-        }
-
-        return $response;
+        return $this->callApiV1Method(self::API_ROUTE_PREFIX . 'orders.json/generateReceipt/' . $orderId);
     }
 
     public function setPaid(int $orderId): ?array
