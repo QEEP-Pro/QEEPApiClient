@@ -188,9 +188,9 @@ class ApiClient
         }
     }
 
-    public function getReceiptQr(int $receiptId)
+    public function getReceiptQr(string $idType, int $receiptId)
     {
-        return $this->callApiV1Method(self::API_ROUTE_PREFIX . 'orders.json/getReceiptQr/' . $receiptId);
+        return $this->callApiV1Method(self::API_ROUTE_PREFIX . 'orders.json/getReceiptQr/' . $idType . '/' . $receiptId);
     }
 
     public function generateReceipt(int $orderId): array
