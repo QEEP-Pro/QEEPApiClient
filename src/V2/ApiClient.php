@@ -90,10 +90,13 @@ class ApiClient
     }
 
     /** @return Product[] */
-    public function getUpdatedProducts(int $lastUpdated): array
+    public function getUpdatedProducts(int $timestamp): array
     {
         return $this->deserializeArray(
-            $this->callApiV2Method('products/getUpdated/' . $lastUpdated) ?? [],
+            $this->callApiV2Method(
+                'products/updates',
+                ['from_time' => $timestamp],
+                ) ?? [],
             Product::class
         );
     }
