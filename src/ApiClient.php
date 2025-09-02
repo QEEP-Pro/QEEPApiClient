@@ -256,6 +256,24 @@ class ApiClient
         return $products;
     }
 
+    /** @return Product[] */
+    public function getUpdatedProducts(int $timestamp): array
+    {
+        $rawProducts = $this->callApiV1Method(
+            self::API_ROUTE_PREFIX . 'catalog.json/getUpdates',
+            ['from_time' => $timestamp],
+        ) ?? [];
+
+        $products = [];
+        foreach ($rawProducts as $rawProduct) {
+            $products[] = $this
+                ->serializer
+                ->denormalize($rawProduct, Product::class);
+        }
+
+        return $products;
+    }
+
     /** @return Tag[] */
     public function getTags(): array
     {
@@ -430,7 +448,7 @@ class ApiClient
         $error = curl_error($ch);
         $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
-
+        
         if ($error || 200 != $code) {
             throw new ApiException('Curl returned error' . $error . ' code: ' . $code . ' params ' . $params, $code);
         }
