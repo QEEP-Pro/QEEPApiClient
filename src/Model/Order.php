@@ -50,6 +50,8 @@ class Order
 
     protected $isKiosk = null;
 
+    protected $isQrPayment = false;
+
     protected $extraData;
 
     public function __construct()
@@ -352,6 +354,18 @@ class Order
     public function getIsKiosk(): ?bool
     {
         return $this->isKiosk;
+    }
+
+    public function isQrPayment(): ?bool
+    {
+        return $this->isQrPayment;
+    }
+
+    public function setIsQrPayment(bool $isQrPayment): Order
+    {
+        $this->isQrPayment = $isQrPayment;
+
+        return $this;
     }
 
     public function getExtraData(): ?string
