@@ -2,6 +2,9 @@
 
 namespace QEEP\QEEPApiClient;
 
+use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
+use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
+use JMS\Serializer\SerializerBuilder;
 use QEEP\QEEPApiClient\Model\Article;
 use QEEP\QEEPApiClient\Model\ArticleType;
 use QEEP\QEEPApiClient\Model\Brand;
@@ -12,10 +15,6 @@ use QEEP\QEEPApiClient\Model\Product;
 use QEEP\QEEPApiClient\Model\Question;
 use QEEP\QEEPApiClient\Model\Setting;
 use QEEP\QEEPApiClient\Model\Tag;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
 
 class ApiClient
 {
@@ -50,10 +49,13 @@ class ApiClient
         $this->salesChannel = $salesChannel;
         $this->imageUrl = $imageUrl;
 
-        $this->serializer = new Serializer(
-            [new ObjectNormalizer(null, new CamelCaseToSnakeCaseNameConverter())],
-            [new JsonEncoder()]
-        );
+        $this->serializer = SerializerBuilder::create()
+            ->setPropertyNamingStrategy(
+                new SerializedNameAnnotationStrategy(
+                    new IdenticalPropertyNamingStrategy()
+                )
+            )
+            ->build();
     }
 
     public function createOrder(Order $order): array
@@ -61,7 +63,7 @@ class ApiClient
         $order->setSalesChannel($this->salesChannel);
         $response = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'orders.json/createOrder',
-            $this->serializer->normalize($order),
+            $this->serializer->toArray($order),
             'POST'
         );
 
@@ -97,7 +99,7 @@ class ApiClient
     {
         $response = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'create-feedback',
-            $this->serializer->normalize($feedback),
+            $this->serializer->toArray($feedback),
             'POST'
         );
 
@@ -177,7 +179,7 @@ class ApiClient
 
         $response = $this->callApiV1Method(
             self::API_ROUTE_PREFIX . 'orders.json/createOrder',
-            $this->serializer->normalize($order),
+            $this->serializer->toArray($order),
             'POST'
         );
 
@@ -233,7 +235,7 @@ class ApiClient
         foreach ($rawStatuses as $rawStatus) {
             $statuses[] = $this
                 ->serializer
-                ->denormalize($rawStatus, OrderStatus::class);
+                ->deserialize($rawStatus, OrderStatus::class, 'json');
         }
 
         return $statuses;
@@ -250,7 +252,7 @@ class ApiClient
         foreach ($rawProducts as $rawProduct) {
             $products[] = $this
                 ->serializer
-                ->denormalize($rawProduct, Product::class);
+                ->deserialize($rawProduct, Product::class, 'json');
         }
 
         return $products;
@@ -267,7 +269,7 @@ class ApiClient
         foreach ($rawTags as $rawTag) {
             $tags[] = $this
                 ->serializer
-                ->denormalize($rawTag, Tag::class);
+                ->deserialize($rawTag, Tag::class, 'json');
         }
 
         return $tags;
@@ -283,7 +285,7 @@ class ApiClient
         foreach ($rawQuestions as $rawQuestion) {
             $questions[] = $this
                 ->serializer
-                ->denormalize($rawQuestion, Question::class);
+                ->deserialize($rawQuestion, Question::class, 'json');
         }
 
         return $questions;
@@ -301,7 +303,7 @@ class ApiClient
         foreach ($rawArticleTypes as $rawArticleType) {
             $articleTypes[] = $this
                 ->serializer
-                ->denormalize($rawArticleType, ArticleType::class);
+                ->deserialize($rawArticleType, ArticleType::class, 'json');
         }
 
         return $articleTypes;
@@ -319,7 +321,7 @@ class ApiClient
         foreach ($rawArticles as $rawArticle) {
             $articles[] = $this
                 ->serializer
-                ->denormalize($rawArticle, Article::class);
+                ->deserialize($rawArticle, Article::class, 'json');
         }
 
         return $articles;
@@ -355,7 +357,7 @@ class ApiClient
         foreach ($rawBrands as $rawBrand) {
             $brands[] = $this
                 ->serializer
-                ->denormalize($rawBrand, Brand::class);
+                ->deserialize($rawBrand, Brand::class, 'json');
         }
 
         return $brands;
@@ -376,7 +378,7 @@ class ApiClient
         try {
             $response = $this->callApiV1Method(
                 self::API_ROUTE_PREFIX . 'payments/qr',
-                $this->serializer->normalize($order),
+                $this->serializer->toArray($order),
                 'POST'
             );
         } catch (ApiException $e) {
