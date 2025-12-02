@@ -2,7 +2,7 @@
 
 namespace QEEP\QEEPApiClient;
 
-use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
+use JMS\Serializer\Naming\CamelCaseNamingStrategy;
 use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\SerializerBuilder;
 use QEEP\QEEPApiClient\Model\Article;
@@ -52,7 +52,7 @@ class ApiClient
         $this->serializer = SerializerBuilder::create()
             ->setPropertyNamingStrategy(
                 new SerializedNameAnnotationStrategy(
-                    new IdenticalPropertyNamingStrategy()
+                    new CamelCaseNamingStrategy('_', true)
                 )
             )
             ->build();
