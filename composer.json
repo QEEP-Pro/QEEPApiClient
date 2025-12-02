@@ -23,7 +23,7 @@
         "ext-json": "*",
 
         "jms/serializer": "^3.29.0",
-        "doctrine/annotations": "*"
+        "doctrine/annotations": "^2.0.2"
     },
     "require-dev": {
         "phpspec/phpspec": "^7.6.0",
