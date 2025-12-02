@@ -22,7 +22,8 @@
         "ext-curl": "*",
         "ext-json": "*",
 
-        "jms/serializer": "^3.29.0"
+        "jms/serializer": "^3.29.0",
+        "doctrine/annotations": "*"
     },
     "require-dev": {
         "phpspec/phpspec": "^7.6.0",

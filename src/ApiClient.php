@@ -20,9 +20,9 @@ class ApiClient
 {
     private const PaymentTypes = ['sberbank', 'robokassa', 'modulbank'];
 
-    const API_ROUTE_PREFIX = '/api/';
+    private const API_ROUTE_PREFIX = '/api/';
 
-    const API_IMAGE_PREFIX = 'images.';
+    private const API_IMAGE_PREFIX = 'images.';
 
     private $clientId;
 

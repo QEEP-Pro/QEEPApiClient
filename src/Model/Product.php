@@ -131,12 +131,12 @@ class Product
 
     // QEEP-Pro отдает массив фотографий под именем `photo` вместо `photos`
 
-//    public function setPhotos(array $photos): Product
-//    {
-//        $this->photos = $photos;
-//
-//        return $this;
-//    }
+    //    public function setPhotos(array $photos): Product
+    //    {
+    //        $this->photos = $photos;
+    //
+    //        return $this;
+    //    }
 
     public function setPhoto(array $photo): Product
     {

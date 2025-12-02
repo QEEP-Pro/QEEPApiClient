@@ -1,7 +1,7 @@
 vendor/
 bin/
 .DS_Store
-.php_cs.cache
+.php-cs-fixer.cache
 .idea
 Dockerfile
 docker-compose.yml

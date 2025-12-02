@@ -1,18 +1,26 @@
 <?php
 
-return PhpCsFixer\Config::create()
+declare(strict_types=1);
+
+use PhpCsFixer\Config;
+use PhpCsFixer\Finder;
+use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
+
+return (new Config())
+    ->setParallelConfig(ParallelConfigFactory::detect()) // @TODO 4.0 no need to call this manually
+    ->setRiskyAllowed(false)
     ->setRules([
         '@PSR2' => true,
         'array_syntax' => ['syntax' => 'short'],
         'backtick_to_shell_exec' => true,
         'binary_operator_spaces' => true,
         'blank_line_before_statement' => ['statements' => ['return']],
-        'braces' => ['allow_single_line_closure' => true],
+        'control_structure_braces' => true,
         'cast_spaces' => true,
         'class_definition' => ['single_line' => true],
         'concat_space' => ['spacing' => 'one'],
         'fully_qualified_strict_types' => true,
-        'function_typehint_space' => true,
+        'type_declaration_spaces' => true,
         'include' => true,
         'increment_style' => ['style' => 'post'],
         'linebreak_after_opening_tag' => true,
@@ -20,7 +28,7 @@ return PhpCsFixer\Config::create()
         'magic_method_casing' => true,
         'method_argument_space' => ['on_multiline' => 'ignore'],
         'native_function_casing' => true,
-        'native_function_type_declaration_casing' => true,
+        'native_type_declaration_casing' => true,
         'no_alternative_syntax' => true,
         'no_binary_string' => true,
         'no_blank_lines_after_phpdoc' => true,
@@ -29,7 +37,7 @@ return PhpCsFixer\Config::create()
         'no_empty_statement' => true,
         'no_extra_blank_lines' => ['tokens' => ['curly_brace_block', 'extra', 'parenthesis_brace_block', 'square_brace_block', 'throw', 'use']],
         'no_unneeded_control_parentheses' => ['statements' => ['break', 'clone', 'continue', 'echo_print', 'return', 'switch_case', 'yield']],
-        'no_unneeded_curly_braces' => true,
+        'no_unneeded_braces' => true,
         'no_unset_cast' => true,
         'no_unused_imports' => true,
         'no_whitespace_before_comma_in_array' => true,
@@ -65,9 +73,24 @@ return PhpCsFixer\Config::create()
         'space_after_semicolon' => true,
         'standardize_increment' => true,
         'standardize_not_equals' => true,
-        'trailing_comma_in_multiline_array' => true,
+        'trailing_comma_in_multiline' => ['elements' => ['arrays']],
         'trim_array_spaces' => true,
         'unary_operator_spaces' => true,
         'whitespace_after_comma_in_array' => true,
     ])
+    // 💡 by default, Fixer looks for `*.php` files excluding `./vendor/` - here, you can groom this config
+    ->setFinder(
+        (new Finder())
+            // 💡 root folder to check
+            ->in(__DIR__)
+            // 💡 additional files, eg bin entry file
+            // ->append([__DIR__.'/bin-entry-file'])
+            // 💡 folders to exclude, if any
+            // ->exclude([/* ... */])
+            // 💡 path patterns to exclude, if any
+            // ->notPath([/* ... */])
+            // 💡 extra configs
+            // ->ignoreDotFiles(false) // true by default in v3, false in v4 or future mode
+            // ->ignoreVCSIgnored(true) // true by default
+    )
 ;

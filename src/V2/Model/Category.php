@@ -29,6 +29,7 @@ class Category
 
     /**
      * @JMS\Type("boolean")
+     *
      * @JMS\SerializedName("brandsAsSubcategories")
      */
     protected $brandsAsSubcategories;
