@@ -14,54 +14,63 @@ class DeliveryInterval
 
     /**
      * @JMS\Type("integer")
+     *
      * @JMS\SerializedName("hourFrom")
      */
     protected $hourFrom;
 
     /**
      * @JMS\Type("integer")
+     *
      * @JMS\SerializedName("hourTo")
      */
     protected $hourTo;
 
     /**
      * @JMS\Type("integer")
+     *
      * @JMS\SerializedName("timeFrom")
      */
     protected $timeFrom;
 
     /**
      * @JMS\Type("integer")
+     *
      * @JMS\SerializedName("timeTo")
      */
     protected $timeTo;
 
     /**
      * @JMS\Type("integer")
+     *
      * @JMS\SerializedName("minuteFrom")
      */
     protected $minuteFrom;
 
     /**
      * @JMS\Type("integer")
+     *
      * @JMS\SerializedName("minuteTo")
      */
     protected $minuteTo;
 
     /**
      * @JMS\Type("integer")
+     *
      * @JMS\SerializedName("daysToPreOrder")
      */
     protected $daysToPreOrder;
 
     /**
      * @JMS\Type("integer")
+     *
      * @JMS\SerializedName("hoursToPreOrder")
      */
     protected $hoursToPreOrder;
 
     /**
      * @JMS\Type("array<integer>")
+     *
      * @JMS\SerializedName("daysOfWeek")
      */
     protected $daysOfWeek;

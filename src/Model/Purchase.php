@@ -14,10 +14,10 @@ class Purchase
 
     // QEEP-Pro принимает `code` вместо `id`
 
-//    public function getId() : ?int
-//    {
-//        return $this->id;
-//    }
+    //    public function getId() : ?int
+    //    {
+    //        return $this->id;
+    //    }
 
     public function getCode(): ?int
     {

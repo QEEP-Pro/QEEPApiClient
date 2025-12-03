@@ -11,14 +11,18 @@ class Point
 {
     /**
      * @JMS\Type("float")
+     *
      * @JMS\SerializedName("lat")
+     *
      * @JMS\Expose
      */
     private $lat;
 
     /**
      * @JMS\Type("float")
+     *
      * @JMS\SerializedName("lng")
+     *
      * @JMS\Expose
      */
     private $lng;

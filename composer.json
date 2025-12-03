@@ -18,20 +18,20 @@
         "test": "php bin/phpspec run"
     },
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.4",
         "ext-curl": "*",
         "ext-json": "*",
 
-        "symfony/serializer": "^4.0 | ^3.0",
-        "symfony/property-access": "^4.0 | ^3.0",
-        "jms/serializer": "^1.10",
-        "doctrine/common": "^2.8"
+        "symfony/serializer": "^7.0 | ^6.0 | ^5.0 | ^4.0 | ^3.0",
+        "symfony/property-access": "^7.0 | ^6.0 | ^5.0 | ^4.0 | ^3.0",
+        "jms/serializer": "^3.32.5",
+        "doctrine/annotations": "^2.0.2"
     },
     "require-dev": {
-        "phpspec/phpspec": "^4.2",
-        "php-mock/php-mock-prophecy": "^0.0.2",
-        "php-mock/php-mock": "1.0",
-        "friendsofphp/php-cs-fixer": "^2.11"
+        "phpspec/phpspec": "^7.6.0",
+        "php-mock/php-mock-prophecy": "^0.1.4",
+        "php-mock/php-mock": "^2.6.2",
+        "friendsofphp/php-cs-fixer": "^3.91.2"
     },
     "autoload": {
         "psr-4": {

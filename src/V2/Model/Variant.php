@@ -26,6 +26,7 @@ class Variant
 
     /**
      * @JMS\SerializedName("groupModifiers")
+     *
      * @JMS\Type("array<QEEP\QEEPApiClient\V2\Model\GroupModifier>")
      *
      * @var GroupModifier[]
