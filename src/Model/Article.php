@@ -63,15 +63,6 @@ class Article
         return $this->typeId;
     }
 
-    // QEEP-Pro отдает объект типа вместо идентификатора
-
-    //    public function setTypeId(int $typeId) : Article
-    //    {
-    //        $this->typeId = $typeId;
-    //
-    //        return $this;
-    //    }
-
     public function setType(array $type): Article
     {
         $this->typeId = $type['id'];

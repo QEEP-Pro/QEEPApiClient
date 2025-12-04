@@ -57,13 +57,6 @@ class Order
         $this->purchases = [];
     }
 
-    // QEEP-Pro принимает `orderId` вместо `id`
-
-    //    public function getId() : ?int
-    //    {
-    //        return $this->id;
-    //    }
-
     public function getOrderId(): ?int
     {
         return $this->id;
@@ -268,13 +261,6 @@ class Order
         return $this;
     }
 
-    // QEEP-Pro принимает `website` вместо `salesChannel`
-
-    //    public function getSalesChannel() : ?string
-    //    {
-    //        return $this->salesChannel;
-    //    }
-
     public function getWebsite(): ?string
     {
         return $this->salesChannel;
@@ -298,13 +284,6 @@ class Order
 
         return $this;
     }
-
-    // QEEP-Pro принимает `products` вместо `purchases`
-
-    //    public function getPurchases() : array
-    //    {
-    //        return $this->purchases;
-    //    }
 
     public function getProducts(): array
     {
