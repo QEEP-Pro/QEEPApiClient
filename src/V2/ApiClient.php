@@ -93,9 +93,9 @@ class ApiClient
     public function getCustomQuestions(): array
     {
         return $this->deserializeArray(
-             $this->callApiV2Method('questions/get') ?? [],
-             CustomQuestion::class
-         );
+            $this->callApiV2Method('questions/get') ?? [],
+            CustomQuestion::class
+        );
     }
 
     /** @return string[] */

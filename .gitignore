@@ -3,3 +3,6 @@ bin/
 .DS_Store
 .php_cs.cache
 .idea
+Dockerfile
+docker-compose.yml
+.php-cs-fixer.cache
