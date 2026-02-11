@@ -50,6 +50,8 @@ class Order
 
     protected $isKiosk = null;
 
+    protected $changeForBill = null;
+
     protected $extraData;
 
     public function __construct()
@@ -347,6 +349,18 @@ class Order
         $extraData = json_decode($this->extraData, true) ?: [];
         $newExtraData = array_merge($extraData, $data);
         $this->extraData = json_encode($newExtraData);
+
+        return $this;
+    }
+
+    public function getChangeForBill(): ?string
+    {
+        return $this->changeForBill;
+    }
+
+    public function setChangeForBill(?string $changeForBill): Order
+    {
+        $this->changeForBill = $changeForBill;
 
         return $this;
     }
