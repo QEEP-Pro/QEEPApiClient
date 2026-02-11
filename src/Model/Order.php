@@ -50,6 +50,8 @@ class Order
 
     protected $isKiosk = null;
 
+    protected $miniAppType = null;
+
     protected $changeForBill = null;
 
     protected $extraData;
@@ -349,6 +351,18 @@ class Order
         $extraData = json_decode($this->extraData, true) ?: [];
         $newExtraData = array_merge($extraData, $data);
         $this->extraData = json_encode($newExtraData);
+
+        return $this;
+    }
+
+    public function getMiniAppType(): ?string
+    {
+        return $this->miniAppType;
+    }
+
+    public function setMiniAppType(?string $miniAppType): Order
+    {
+        $this->miniAppType = $miniAppType;
 
         return $this;
     }
