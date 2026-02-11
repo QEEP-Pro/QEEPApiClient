@@ -89,7 +89,6 @@ class ApiClient
         );
     }
 
-
     /** @return CustomQuestion[] */
     public function getCustomQuestions(): array
     {
