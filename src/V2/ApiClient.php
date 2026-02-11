@@ -89,14 +89,6 @@ class ApiClient
         );
     }
 
-    /** @return Product[] */
-    public function getUpdatedProducts(int $lastUpdated): array
-    {
-        return $this->deserializeArray(
-            $this->callApiV2Method('products/getUpdated/' . $lastUpdated) ?? [],
-            Product::class
-        );
-    }
 
     /** @return CustomQuestion[] */
     public function getCustomQuestions(): array
